@@ -12,7 +12,7 @@ import { styled } from "@mui/material/styles";
 
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import inpulseLogo from "@img/inpulse_design_logo_blanco.svg";
-import logoContraste from "@img/mundo_adaptogenos.svg";
+import logoContraste from "@img/logo.svg";
 import { menuItems } from "../utils/info";
 import {
   Text2,
@@ -67,7 +67,7 @@ export const Footer: React.FC = () => {
     if (navigator.share) {
       navigator
         .share({
-          title: "Mundo Adaptógenos",
+          title: "Óptica Villagra",
           url: window.location.href,
         })
         .catch(console.error);
@@ -111,7 +111,7 @@ export const Footer: React.FC = () => {
               <Box
                 component={"img"}
                 src={logoContraste}
-                alt="Mundo Adaptógenos Blanco y Negro"
+                alt="Óptica Villagra Blanco y Negro"
                 decoding="async"
                 loading="lazy"
                 sx={{

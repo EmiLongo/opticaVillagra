@@ -12,7 +12,7 @@ import {
   useTheme,
   Badge
 } from '@mui/material';
-import logoTextHorizontal from '@img/mundo_adaptogenos.svg';
+import logoTextHorizontal from '@img/logo_nombre.svg';
 import logoTextVertical from '@img/logo_img.svg';
 import inpulseLogo from "@img/inpulse_design_logo_negro_color.svg";
 
@@ -41,7 +41,7 @@ export const HeaderOneLine: React.FC = () => {
         <Box 
           component={"img"} 
           src={logoTextVertical} 
-          alt="Logo Mundo Adaptógenos" 
+          alt="Logo Óptica Villagra" 
           height="100px" 
           onClick={handleLogoClick}
           decoding="async"
@@ -133,8 +133,8 @@ export const HeaderOneLine: React.FC = () => {
                   <Box 
                   component={"img"}
                   src={logoTextHorizontal}
-                  alt="Logo Mundo Adaptógenos"
-                  height="40px"
+                  alt="Logo Óptica Villagra"
+                  height="60px"
                   onClick={handleLogoClick}
                   />
                   <IconButton onClick={() => navigate("/cart")} sx={{ mx: 2 }}>
@@ -151,8 +151,8 @@ export const HeaderOneLine: React.FC = () => {
                 <Box 
                   component={"img"}
                   src={logoTextHorizontal}
-                  alt="Logo Mundo Adaptógenos"
-                  height="40px"
+                  alt="Logo Óptica Villagra"
+                  height="60px"
                   onClick={handleLogoClick}
                 />
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: {xs: '3rem', lg: '4rem', xl: '5rem'} }}>
