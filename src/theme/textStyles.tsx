@@ -7,8 +7,8 @@ export const defaultFonts = {
     normal: 0.3,
   },
   family: {
-    titulos: "Exo, Fira Sans Extra Condensed, arial, calibri, sans-serif",
-    textos: "Josefin Sans, Jost, arial, calibri, sans-serif",
+    titulos: "Plus Jakarta Sans, arial, calibri, sans-serif",
+    textos: "Inter, arial, calibri, sans-serif",
   },
 };
 
