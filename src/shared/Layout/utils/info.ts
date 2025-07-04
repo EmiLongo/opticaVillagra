@@ -14,10 +14,11 @@ export const navBarMobileHeight: string = "70px";
 
 
 export const productsItems = [
-  { text: 'Melena de León', path: '/melena' },
-  { text: 'Cordyceps Militaris', path: '/cordyceps' },
-  { text: 'Reishi', path: '/reishi' },
-  { text: 'Cola de Pavo', path: '/cola-pavo' },
+  { text: 'Anteojos de Sol', path: '/anteojos-de-sol' },
+  { text: 'Armazones de Receta', path: '/armazones-receta' },
+  { text: 'Clip-On', path: '/clip-on' },
+  { text: 'Indestructibles', path: '/indestructibles' },
+  { text: 'Quiénes somos', path: '/about-us' },
 ];
 
 export const menuItems = [
