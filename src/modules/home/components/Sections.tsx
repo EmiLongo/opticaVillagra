@@ -5,7 +5,7 @@ import BannerCategoria2 from '@img/home/BannerCategoria2.webp'
 import BannerCategoria3 from '@img/home/BannerCategoria3.webp'
 import BannerCategoria4 from '@img/home/BannerCategoria4.webp'
 import { greyColor } from "@/theme/theme"
-import { Title2 } from "@/theme/textStyles"
+import { Heading2 } from "@/theme/textStyles"
 
 // TODO: Agregar las secciones de la home con el backend
 const sections = [
@@ -52,7 +52,7 @@ export const Sections: React.FC = () => {
           width: '100%',
           backgroundImage: `linear-gradient(to top,rgba(255, 255, 255, 0.7), #FFFFFF00)`,
         }}>
-          <Title2 sx={{ color: greyColor[950] }}>{section.title}</Title2>
+          <Heading2 sx={{ color: greyColor[950] }}>{section.title}</Heading2>
         </Box>
       </Box>
       ))}

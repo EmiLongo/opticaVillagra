@@ -1,5 +1,5 @@
 // src/shared/components/user/Profile.tsx
-import { Title1, InputError, Title2 } from "@/theme/textStyles";
+import { Heading1, InputError, Heading2 } from "@/theme/textStyles";
 import { Accordion, AccordionDetails, AccordionSummary, Box, IconButton, InputAdornment, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import React, { useRef, useState } from "react";
@@ -76,13 +76,13 @@ export const Profile: React.FC = () => {
         justifyContent: "center" 
 
       }}>
-        <Title1 sx={{ 
+        <Heading1 sx={{ 
           marginTop: "2rem",
           marginBottom: "1rem",
           textAlign: "center",
         }}>
           PERFIL
-        </Title1>
+        </Heading1>
         {/* Nombre y Apellido */}
         <TextField
           fullWidth
@@ -141,7 +141,7 @@ export const Profile: React.FC = () => {
         aria-controls="panel1-content"
         id="panel1-header"
       >
-        <Title2>Cambiar la contraseña</Title2>
+        <Heading2>Cambiar la contraseña</Heading2>
       </AccordionSummary>
       <AccordionDetails sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
         {/* Contraseña */}

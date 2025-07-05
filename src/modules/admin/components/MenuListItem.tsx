@@ -3,7 +3,7 @@ import { greyColor, blueColor } from "@/theme/theme";
 import { Box, ListItem, Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
 import { IMenuOption } from "../utils/info";
-import { Title3 } from "@/theme/textStyles";
+import { Heading3 } from "@/theme/textStyles";
 import React from "react";
 
 export interface IMenuListItemProps {
@@ -57,7 +57,7 @@ export const MenuListItem: React.FC<IMenuListItemProps> = ({ item, index, curren
             {item.icon}
           </Box>
         </Tooltip>
-        <Title3
+        <Heading3
           sx={{ 
             fontWeight: 400, 
             whiteSpace: "nowrap",
@@ -70,7 +70,7 @@ export const MenuListItem: React.FC<IMenuListItemProps> = ({ item, index, curren
           }}
         >
           {item.title}
-        </Title3>
+        </Heading3>
       </Link>
     </ListItem>
   )

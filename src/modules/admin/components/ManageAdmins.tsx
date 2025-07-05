@@ -1,9 +1,9 @@
 // src/modules/admin/components/ManageAdmins.tsx
 import React from "react"
 import { Box } from "@mui/material"
-import { Title2, Title3, Subtitle } from "@/theme/textStyles"
-import { WhiteButton } from "@/shared/components/buttons/WhiteButton"
-import { redColor } from "@/theme/theme";
+import { Heading2, Heading3, SubHeading } from "@theme/textStyles"
+import { WhiteButton } from "@shared/components/buttons/WhiteButton"
+import { redColor } from "@theme/theme";
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 
@@ -37,9 +37,9 @@ export const ManageAdmins: React.FC = () => {
       marginY: {xs: '2rem', md: '3rem'},
     }}>
       <Box sx={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
-        <Title2>
+        <Heading2>
           Administradores
-        </Title2>
+        </Heading2>
       </Box>
       <Box sx={{display: 'flex', alignItems: 'center', gap: '2rem', flexDirection: 'column', marginX: "auto"}}>
         { adminList?.length > 0 
@@ -56,19 +56,19 @@ export const ManageAdmins: React.FC = () => {
               justifyContent: 'space-between'}}
           >
   
-            <Subtitle sx={{fontWeight: '600'}}>
+            <SubHeading sx={{fontWeight: '600'}}>
               {index + 1}
-            </Subtitle>
+            </SubHeading>
   
             <Box sx={{flexGrow: 1}}>
-              <Subtitle sx={{fontSize: '1.1rem'}}>
+              <SubHeading sx={{fontSize: '1.1rem'}}>
                 {user.name}
-              </Subtitle>
+              </SubHeading>
             </Box>
             <Box sx={{flexGrow: 1}}>
-              <Subtitle>
+              <SubHeading>
                 {user.email}
-              </Subtitle>
+              </SubHeading>
             </Box>
             <Box sx={{display: 'flex', gap: '1rem'}}>
               <WhiteButton
@@ -89,9 +89,9 @@ export const ManageAdmins: React.FC = () => {
           </Box>
          ))
         :
-        <Title3 sx={{textAlign: 'center', fontWeight: '600'}}>
+        <Heading3 sx={{textAlign: 'center', fontWeight: '600'}}>
           No hay administradores registrados
-        </Title3>
+        </Heading3>
       }
       </Box>
     </Box>

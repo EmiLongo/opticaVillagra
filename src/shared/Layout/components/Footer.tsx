@@ -15,8 +15,8 @@ import inpulseLogo from "@img/inpulse_design_logo_blanco.svg";
 import logoContraste from "@img/logo.svg";
 import { menuItems } from "../utils/info";
 import {
-  Text2,
-  Title2,
+  BodyM,
+  Heading2,
 } from "@/theme/textStyles";
 import { toast } from "react-toastify";
 
@@ -67,7 +67,7 @@ export const Footer: React.FC = () => {
     if (navigator.share) {
       navigator
         .share({
-          title: "Óptica Villagra",
+          Heading: "Óptica Villagra",
           url: window.location.href,
         })
         .catch(console.error);
@@ -133,19 +133,19 @@ export const Footer: React.FC = () => {
                   height={24}
                   sx={{ verticalAlign: "middle", marginRight: 1 }}
                 />
-                <Text2 sx={{ color: palette.primary[100], fontWeight: 400 }}>
+                <BodyM sx={{ color: palette.primary[100], fontWeight: 400 }}>
                   Compartir página
-                </Text2>
+                </BodyM>
               </Box>
             </Box>
           </Box>
             <Box id="footerRight" sx={{ display: "flex", flexDirection: "column", justifyContent: "center"}}>
-              <Title2 sx={{ color: palette.primary[100], textAlign: "center", textTransform: "none", marginBottom: {xs: "1rem", sm: "unset"} }}>Nuestra Web:</Title2>
+              <Heading2 sx={{ color: palette.primary[100], textAlign: "center", textTransform: "none", marginBottom: {xs: "1rem", sm: "unset"} }}>Nuestra Web:</Heading2>
               <Box>
                 <FooterList>
                   <FooterListItem id="footerListItem-home">
                     <FooterLink href="#hero">
-                      <Text2 sx={{ color: "inherit" }}>Home</Text2>
+                      <BodyM sx={{ color: "inherit" }}>Home</BodyM>
                     </FooterLink>
                   </FooterListItem>
                   {menuItems.map((item) => (
@@ -154,7 +154,7 @@ export const Footer: React.FC = () => {
                       id={`footerListItem-${item.text}`}
                     >
                       <FooterLink href={item.path}>
-                        <Text2 sx={{ color: "inherit", textAlign: "center" }}>{item.text}</Text2>
+                        <BodyM sx={{ color: "inherit", textAlign: "center" }}>{item.text}</BodyM>
                       </FooterLink>
                     </FooterListItem>
                   ))}
@@ -183,9 +183,9 @@ export const Footer: React.FC = () => {
             marginTop: "2rem",
           }}
         >
-          <Text2 sx={{ color: "inherit",textAlign: "center" }}>
+          <BodyM sx={{ color: "inherit",textAlign: "center" }}>
             Derechos reservados © {new Date().getFullYear()}.
-          </Text2>
+          </BodyM>
           <Box
             component={"a"}
             href="https://inpulse.com.ar"
@@ -197,9 +197,9 @@ export const Footer: React.FC = () => {
               gap: "0.75rem",
             }}
           >
-            <Text2 sx={{ color: "inherit",textAlign: "center" }}>
+            <BodyM sx={{ color: "inherit",textAlign: "center" }}>
               Desarrollado por
-            </Text2>
+            </BodyM>
             <Box
               component={"img"}
               src={inpulseLogo}

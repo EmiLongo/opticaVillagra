@@ -3,7 +3,7 @@ import { Box,  TextField } from "@mui/material"
 import { useFormik } from "formik";
 import React, { useRef } from "react";
 import { toast } from "react-toastify";
-import { Title1, InputError } from "@/theme/textStyles";
+import { Heading1, InputError } from "@/theme/textStyles";
 import { redColor } from "@theme/theme";
 import * as Yup from 'yup';
 import { ColorButton } from "@shared/components/buttons/ColorButton";
@@ -65,13 +65,13 @@ export const CreateAdmin: React.FC = () => {
         justifyContent: "center" 
 
       }}>
-        <Title1 sx={{ 
+        <Heading1 sx={{ 
           marginTop: {xs: "2rem", md:"4rem" },
           marginBottom: "1rem",
           textAlign: "center",
         }}>
           Crear Administrador
-        </Title1>
+        </Heading1>
         {/* Nombre y Apellido */}
         <TextField
           fullWidth
