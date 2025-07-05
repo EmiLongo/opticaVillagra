@@ -18,7 +18,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
-import { BodyS, Heading2, TextBox } from '@theme/textStyles';
+import { BodyS, Heading5, TextBox } from '@theme/textStyles';
 import { useNavigate } from 'react-router-dom';
 import { isNavBarTransparent, menuItems, navBarDesktopHeight, navBarMobileHeight, productsItems } from '../utils/info';
 import { SearchField } from './SearchField';
@@ -68,12 +68,16 @@ export const HeaderTwoLines: React.FC = () => {
       <List sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
         {productsItems.map((item) => (
           <Box key={item.text} component={"a"} href={item.path}>
-            <Heading2 sx={{ fontSize: '1.2rem', color: palette.text.primary, textTransform: 'none', }}>{item.text}</Heading2>
+            <Heading5 sx={{ "&:hover":{color: palette.text.primary, }}}>
+              {item.text}
+            </Heading5>
           </Box>
         ))}
         {menuItems.map((item) => (
           <Box key={item.text} component={"a"} href={item.path}>
-            <Heading2 sx={{ fontSize: '1.2rem', color: palette.text.primary, textTransform: 'none', }}>{item.text}</Heading2>
+            <Heading5 sx={{ "&:hover":{color: palette.text.primary, }}}>
+              {item.text}
+            </Heading5>
           </Box>
         ))}
       </List>
@@ -197,14 +201,14 @@ export const HeaderTwoLines: React.FC = () => {
                         component={"a"}
                         href={item.path}
                       >
-                        <Heading2 sx={{
+                        <Heading5 sx={{
                           fontWeight: 500,
                           color: 'text.primary',
                           '&:hover': {
                             color: palette.primary[600],
                           },
                           textTransform: 'none',
-                        }}>{item.text}</Heading2>
+                        }}>{item.text}</Heading5>
                       </Box>
                     ))} */}
                   </Box>
@@ -225,14 +229,9 @@ export const HeaderTwoLines: React.FC = () => {
                         component={"a"}
                         href={item.path}
                       >
-                        <Heading2 sx={{
-                          fontWeight: 500,
-                          color: 'text.primary',
-                          '&:hover': {
-                            color: palette.primary[600],
-                          },
-                          textTransform: 'none',
-                        }}>{item.text}</Heading2>
+                        <Heading5 sx={{ "&:hover":{color: palette.text.primary, }}}>
+                          {item.text}
+                        </Heading5>
                       </Box>
                     ))}
                 </Box>
