@@ -89,14 +89,14 @@ export const Title1 = styled((props: TypographyProps) => <Typography {...props} 
   ...defaultTitle(),
   ...responsiveFontSize({ xl: '1.75rem', lg: '1.59rem', md: '1.52rem', sm: '1.44rem', xs: '1.44rem' })(theme), // 24px
   textWrap: "wrap",
-  textTransform: "uppercase",
+
 }));
 
 export const Title2 = styled((props: TypographyProps) => <Typography {...props} />)(({ theme }) => ({
   ...defaultTitle(),
   ...responsiveFontSize({ xl: '1.5rem', lg: '1.375rem', md: '1.325rem', sm: '1.3rem', xs: '1.3rem' })(theme), // 20px
   textWrap: "wrap",
-  textTransform: "uppercase",
+
 }));
 
 export const Title3 = styled((props: TypographyProps) => <Typography {...props} />)(({ theme }) => ({
@@ -104,7 +104,7 @@ export const Title3 = styled((props: TypographyProps) => <Typography {...props} 
   ...responsiveFontSize({ xl: '1.25rem', lg: '1.15rem', md: '1.1rem', sm: '1.05rem', xs: '1.05rem' })(theme), // 16px
   fontWeight: 'normal',
   textWrap: "wrap",
-  textTransform: "uppercase",
+
 }));
 
 // CTA
