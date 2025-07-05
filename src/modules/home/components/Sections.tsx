@@ -4,22 +4,21 @@ import BannerCategoria1 from '@img/home/BannerCategoria1.webp'
 import BannerCategoria2 from '@img/home/BannerCategoria2.webp'
 import BannerCategoria3 from '@img/home/BannerCategoria3.webp'
 import BannerCategoria4 from '@img/home/BannerCategoria4.webp'
-import { greyColor } from "@/theme/theme"
 import { Heading2 } from "@/theme/textStyles"
 
 // TODO: Agregar las secciones de la home con el backend
 const sections = [
   {
     title: 'Anteojos de Sol',
-    image: BannerCategoria1,
+    image: BannerCategoria3,
   },
   {
-    title: 'Armazones de Receta',
+    title: 'Recetados',
     image: BannerCategoria2,
   },
   {
     title: 'Clip-On',
-    image: BannerCategoria3,
+    image: BannerCategoria1,
   },
   {
     title: 'Indestructibles',
@@ -38,7 +37,7 @@ export const Sections: React.FC = () => {
         display: 'flex',
         alignItems: 'end',
         flex: 1,
-        height: '120px',
+        height: {md: '160px', lg: '180px', xl: '200px'},
         backgroundImage: `url(${section.image})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -48,11 +47,11 @@ export const Sections: React.FC = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          height: '40px',
+          height: '70px',
           width: '100%',
           backgroundImage: `linear-gradient(to top,rgba(255, 255, 255, 0.7), #FFFFFF00)`,
         }}>
-          <Heading2 sx={{ color: greyColor[950] }}>{section.title}</Heading2>
+          <Heading2 sx={{ lineHeight:1, textAlign: "center" }}>{section.title}</Heading2>
         </Box>
       </Box>
       ))}
