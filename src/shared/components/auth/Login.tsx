@@ -3,7 +3,7 @@ import { Box, TextField } from "@mui/material";
 import * as Yup from 'yup';
 import { toast } from "react-toastify";
 import { useFormik } from "formik";
-import { errorColor } from "@/theme/theme";
+import { redColor } from "@/theme/theme";
 import { InputError } from "@/theme/textStyles";
 import { ColorButton } from "../buttons/ColorButton";
 import { OnlyTextButton } from "../buttons/OnlyTextButton";
@@ -89,7 +89,7 @@ export const Login: React.FC<LoginProps> = ({
         error={formik.touched.email && Boolean(formik.errors.email)}
         sx={{ backgroundColor: 'background.paper', borderRadius: 1 }}
       />
-      <InputError sx={{ mb: 2, color: errorColor[400], paddingLeft: "12px" }}>
+      <InputError sx={{ mb: 2, color: redColor[400], paddingLeft: "12px" }}>
         {formik.touched.email && formik.errors.email}
       </InputError>
 
@@ -105,7 +105,7 @@ export const Login: React.FC<LoginProps> = ({
         error={formik.touched.password && Boolean(formik.errors.password)}
         sx={{ backgroundColor: 'background.paper', borderRadius: 1 }}
       />
-      <InputError sx={{ mb: 2, color: errorColor[400], paddingLeft: "12px" }}>
+      <InputError sx={{ mb: 2, color: redColor[400], paddingLeft: "12px" }}>
         {formik.touched.password && formik.errors.password}
       </InputError>
       <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between", width: "100%", gap: "1rem" }}>

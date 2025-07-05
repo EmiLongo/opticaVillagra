@@ -3,7 +3,7 @@ import { Box, TextField } from "@mui/material";
 import * as Yup from 'yup';
 import { toast } from "react-toastify";
 import { useFormik } from "formik";
-import { errorColor } from "@/theme/theme";
+import { redColor } from "@/theme/theme";
 import { InputError } from "@/theme/textStyles";
 import { ColorButton } from "../buttons/ColorButton";
 
@@ -74,7 +74,7 @@ export const ForgetPass: React.FC<ForgetPassProps> = ({ isModal = false, setIsOp
         error={formik.touched.email && Boolean(formik.errors.email)}
         sx={{ backgroundColor: 'background.paper', borderRadius: 1 }}
       />
-      <InputError sx={{ mb: 2, color: errorColor[400], paddingLeft: "12px" }}>
+      <InputError sx={{ mb: 2, color: redColor[400], paddingLeft: "12px" }}>
         {formik.touched.email && formik.errors.email}
       </InputError>
 

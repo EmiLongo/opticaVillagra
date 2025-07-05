@@ -1,7 +1,7 @@
 // src/shared/components/ColorButton.jsx
 import React from "react";
 import { Button, CircularProgress } from "@mui/material";
-import { greyColor, primaryColor, secondaryColor } from "@/theme/theme";
+import { greyColor, blueColor, orangeColor } from "@/theme/theme";
 
 type ColorButtonProps = {
   type: "greenButton" | "blueButton";
@@ -33,7 +33,7 @@ export const ColorButton: React.FC<ColorButtonProps> = ({
       height: "40px",
       minWidth: "120px",
       borderRadius: "40px",
-      backgroundColor: type === "blueButton" ? primaryColor[600] : secondaryColor[400],
+      backgroundColor: type === "blueButton" ? blueColor[600] : orangeColor[400],
 
       ...sx,
     }}

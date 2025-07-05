@@ -5,7 +5,7 @@ import {
   CircularProgress,
   Typography,
 } from "@mui/material";
-import { greyColor, primaryColor, secondaryColor } from "@/theme/theme";
+import { greyColor, blueColor, orangeColor } from "@/theme/theme";
 
 type OnlyTextButtonProps = {
   type: "greenButton" | "blueButton";
@@ -46,7 +46,7 @@ export const OnlyTextButton: React.FC<OnlyTextButtonProps> = ({
         padding: 0,
         "&:hover": {
           boxShadow: "none",
-          color: type === "blueButton" ? primaryColor[600] : secondaryColor[400],
+          color: type === "blueButton" ? blueColor[600] : orangeColor[400],
         },
         ...sx,
       }}
