@@ -1,24 +1,21 @@
 import React from "react"
 import { Box, Card } from "@mui/material"
-import { Text3, Title3 } from "@/theme/textStyles"
+import { BodyLEmph, BodyS, Caption, Heading5 } from "@/theme/textStyles"
+import { WhiteButton } from "@shared/components/buttons/WhiteButton"
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import { IProduct } from "@/modules/home/components/Highlights";
+import { blueColor, greyColor, orangeColor } from "@/theme/theme";
 
-interface Product {
-  name: string
-  discount: number
-  imageA: string
-  imageB: string
-}
 
 export const ProductCard: React.FC<{
-  product: Product
+  product: IProduct
 }> = ({ product }) => {
   return (
     <Card 
-    elevation={3}
+    elevation={4}
     sx={{
       width: '100%',
       height: '500px',
-
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -28,18 +25,18 @@ export const ProductCard: React.FC<{
     }}>
       <Box sx={{
         position: 'absolute',
-        top: "1rem",
-        left: "1rem",
-        width: 'auto',
-        height: 'auto',
+        top: "10px",
+        left: "10px",
+        width: '62px',
+        height: '32px',
         padding: '0.5rem',
-        backgroundColor: "secondary.main",
-        borderRadius: '12px',
+        backgroundColor: orangeColor[800],
+        borderRadius: '8px',
       }}>
-        <Text3>{product.discount}%</Text3>
+        <Caption sx={{color: greyColor[50], width: "100%", textAlign: "center"}}>-{product.discount}%</Caption>
       </Box>
-      <Box sx={{ width: "100%", height: "50%"}}>
-        <Box component="picture" display="block" sx={{ width: '100%', height: '100%', objectFit: 'cover' }}>
+      <Box sx={{ width: "100%", height: "50%", display: "flex", justifyContent: "center", alignItems: "center", overflow: 'hidden',}}>
+        <Box component="picture" display="block" sx={{ minWidth: '100%', minHeight: '100%' }}>
           <source srcSet={product.imageA} type="image/webp" />
           <Box
             component="img"
@@ -47,15 +44,43 @@ export const ProductCard: React.FC<{
             alt="Foto descriptiva"
             loading="lazy"
             sx={{
-              width: '100%',
-              height: '100%',
+              minWidth: '100%',
+              minHeight: '100%',
               display: 'block',
             }}
           />
         </Box>
       </Box>
-      <Title3>product.name</Title3>
-
+      <Box sx={{
+        width: "100%",
+        height: "50%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        padding: "1rem"
+      }}>
+        <Heading5 sx={{height: "2.5em", lineHeight: 1.2}}>{product.name}</Heading5>
+        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+          <BodyLEmph>$ {product.priceDiscount}</BodyLEmph>
+          <Caption sx={{textDecoration: "line-through"}}>$ {product.price}</Caption>
+        </Box>
+        <Box sx={{display: "flex", flexDirection: "column", gap: "5px"}}>
+          <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+            <BodyS sx={{color: blueColor[700]}}>$ {product.priceTransfer}</BodyS>
+            <Caption>Transf./ Depósito</Caption>
+          </Box>
+          <BodyS sx={{color: blueColor[700]}}>{product.plan}</BodyS>
+        </Box>
+        <WhiteButton
+          text="AÑADIR AL CARRITO"
+          fetchingText="AÑADIENDO..."
+          onClick={() => console.log(`se quizo añadir ${product.name}`)}
+          isFetching={false}
+          icon={<ShoppingCartOutlinedIcon />}
+          disabled={false}
+          sx={{borderRadius: "30px", width: "100%"}}
+        />
+      </Box>
     </Card>
   )
 }
