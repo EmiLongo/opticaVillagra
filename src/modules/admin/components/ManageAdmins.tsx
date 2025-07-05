@@ -3,7 +3,7 @@ import React from "react"
 import { Box } from "@mui/material"
 import { Title2, Title3, Subtitle } from "@/theme/textStyles"
 import { WhiteButton } from "@/shared/components/buttons/WhiteButton"
-import { errorColor } from "@/theme/theme";
+import { redColor } from "@/theme/theme";
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined';
 
@@ -74,7 +74,7 @@ export const ManageAdmins: React.FC = () => {
               <WhiteButton
                 onClick={() => handleDelete(user.id)}
                 isFetching={false}
-                icon={<DeleteForeverOutlinedIcon sx={{color: errorColor[500], fontSize: '1.3rem'}} />}
+                icon={<DeleteForeverOutlinedIcon sx={{color: redColor[500], fontSize: '1.3rem'}} />}
                 disabled={false}
               />
               <WhiteButton

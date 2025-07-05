@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import React, { useRef } from "react";
 import { toast } from "react-toastify";
 import { Title1, InputError } from "@/theme/textStyles";
-import { errorColor } from "@theme/theme";
+import { redColor } from "@theme/theme";
 import * as Yup from 'yup';
 import { ColorButton } from "@shared/components/buttons/ColorButton";
 
@@ -85,7 +85,7 @@ export const CreateAdmin: React.FC = () => {
           // helperText={formik.touched.name && formik.errors.name}
           sx={inputSx}
         />
-        <InputError sx={{ mb: 2, color: errorColor[400], paddingLeft: "12px" }}>
+        <InputError sx={{ mb: 2, color: redColor[400], paddingLeft: "12px" }}>
           {formik.touched.name && formik.errors.name}
         </InputError>
         {/* Correo Electrónico */}
@@ -101,7 +101,7 @@ export const CreateAdmin: React.FC = () => {
           error={formik.touched.email && Boolean(formik.errors.email)}
           sx={inputSx}
         />
-        <InputError sx={{ mb: 2, color: errorColor[400], paddingLeft: "12px" }}>
+        <InputError sx={{ mb: 2, color: redColor[400], paddingLeft: "12px" }}>
           {formik.touched.email && formik.errors.email}
         </InputError>
         <ColorButton

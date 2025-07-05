@@ -1,5 +1,5 @@
 // src/modules/admin/components/MenuListItem.tsx
-import { greyColor, primaryColor } from "@/theme/theme";
+import { greyColor, blueColor } from "@/theme/theme";
 import { Box, ListItem, Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
 import { IMenuOption } from "../utils/info";
@@ -20,10 +20,10 @@ export const MenuListItem: React.FC<IMenuListItemProps> = ({ item, index, curren
       key={`menu-item-${index}-${item.to}`}
       sx={{
         display: "block",
-        backgroundColor: currentPath === item.to.split("/")[2] ? primaryColor[600] : "transparent",
+        backgroundColor: currentPath === item.to.split("/")[2] ? blueColor[600] : "transparent",
         color: currentPath === item.to.split("/")[2] ? greyColor[50] : greyColor[950],
         "&:hover": {
-          backgroundColor: primaryColor[400],
+          backgroundColor: blueColor[400],
           color: greyColor[950],
           fontWeight: 600,
           cursor: "pointer",
