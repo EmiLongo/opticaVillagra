@@ -67,7 +67,7 @@ export const Footer: React.FC = () => {
     if (navigator.share) {
       navigator
         .share({
-          Heading: "Óptica Villagra",
+          title: "Óptica Villagra",
           url: window.location.href,
         })
         .catch(console.error);
