@@ -20,42 +20,43 @@ export const greyColor = {
   950: "#080808",
 };
 
-export const primaryColor = {
-  // 50: "#f3f6fc",
-  100: "#DEE4F2",
-  200: "#C2D5FF",
-  // 300: "#93b9e6",
-  400: "#6695FF",
+export const blueColor = {  // Blue: primaryColor
+  50: "#F0F3FF",
+  100: "#E4EAFF",
+  200: "#CDD9FF",
+  300: "#A4B5FF",
   // hasta aca contraste con texto negro
-  // 500: "#3478c3",
+  400: "#7185FF",
+  500: "#3849FF",
   // a partir de aca contraste con texto blanco
-  600: "#0033A5",
-  // 700: "#1e4b86",
-  800: "#051242",
-  900: "#09041B",
-  // 950: "#13243e",
-  // elegido
+  600: "#1016FF",
+  700: "#000AFF",
+  800: "#000AD9",
+  900: "#0108B4",
+  950: "#000C79",
 };
 
-export const secondaryColor = {
-	// contraste con texto negro
-	// 50: "#e6f2ec",
-	// 100: "#c4dfcf",
-	// 200: "#a2cab2",
-	// 300: "#84b597",
-	400: "#FD7F16",
+export const orangeColor = {   // Orange: secondaryColor
+  50: "#FFFBE9",
+	100: "#FFF4C2",
+	200: "#FFE97F",
+	300: "#FFD63C",
+	400: "#FFC00F",
+	500: "#FF9C00",
+	// hasta aca contraste con texto negro
+	600: "#EE7000",
+	700: "#C54B00",
 	// a partir de aca contraste con texto blanco
-	// 500: "#689575",
-	600: "#8E4101",
-	// 700: "#57785e",
-	// 800: "#4e6853",
-	// 900: "#3e4c3e",
+	800: "#9D3701",
+	900: "#822E05",
+  950: "#4B1600"
 };
 
 export const accentColor = {
-	// contraste con texto negro
+  // contraste con texto negro
   50: "#faf3e1",
   100: "#f3dfb4", // elegido
+  // hasta aca contraste con texto negro
   200: "#edca80",
   300: "#e8b54a",
   400: "#e4a61c",
@@ -67,32 +68,21 @@ export const accentColor = {
   900: "#cc5600",
 };
 
-export const errorColor = {
-  50: "#FEF2F3",
-  100: "#FDE3E4",
-  200: "#FDCBCE",
-  300: "#FAA7AB",
-  400: "#F57F85",
+export const redColor = {   // Mexican Red: errorColor
+  50: "#FFF0F0",
+  100: "#FFDDDD",
+  // hasta aca contraste con texto negro
+  200: "#FFC1C1",
+  300: "#FF9696",
+  400: "#FF5A5A",
 	// a partir de aca contraste con texto blanco
-  500: "#EB4850",
-  600: "#D72B34", // elegido
-  700: "#A91E25",
-  800: "#961E24",
-  900: "#961E24",
-  950: "#430C0F",
-  // 50: "#FFE2EB",
-  // 100: "#FFB7CD",
-  // 200: "#FF86AB",
-	// // contraste con texto negro
-  // 300: "#FF4E89",
-  // 400: "#FF006F",
-  // 500: "#FD0054",
-  // 600: "#EC0053",
-  // 700: "#D70050",
-  // 800: "#C3004E",
-  // // a partir de aca contraste con texto blanco
-  // 900: "#9D004B",
-  // 950: "#700036",
+  500: "#FF2727",
+  600: "#FB0707", // elegido
+  700: "#D40101",
+  800: "#AE0606",
+  900: "#900C0C",
+  950: "#4C0000",
+
 };
 
 export const customFonts = {
@@ -109,28 +99,31 @@ export const customFonts = {
 export const theme = createTheme({
   palette: {
     primary: {
-      main: primaryColor[900],
-      light: primaryColor[200],
-      ...primaryColor,
+      main: blueColor[600],
+      dark: blueColor[900],
+      light: blueColor[200],
+      ...blueColor,
     },
     secondary: {
-      main: secondaryColor[400], // Color naranja
-      dark: secondaryColor[600],
-      ...secondaryColor,
+      main: orangeColor[500], // Color naranja
+      dark: orangeColor[800],
+      light: orangeColor[200],
+      ...orangeColor,
     },
     background: {
       // default: "#18222986",
       paper: greyColor[50],
     },
     text: {
-      primary: primaryColor[800],
+      primary: blueColor[800],
       secondary: greyColor[950],
       disabled: greyColor[400],
     },
     error: {
-      main: errorColor[800],
-      light: errorColor[400],
-      ...errorColor,
+      main: redColor[400],
+      dark: redColor[800],
+      light: redColor[200],
+      ...redColor,
     },
     grey: {
       ...greyColor,
@@ -199,10 +192,10 @@ export const theme = createTheme({
             borderColor: greyColor[700],
           },
           "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-            borderColor: primaryColor[600],
+            borderColor: blueColor[600],
           },
           "&.Mui-error .MuiOutlinedInput-notchedOutline": {
-            borderColor: errorColor[700],
+            borderColor: redColor[700],
           },
         },
       },
@@ -213,10 +206,10 @@ export const theme = createTheme({
           fontFamily: defaultFonts.family.textos,
           color: greyColor[800],
           "&.Mui-focused": {
-            color: primaryColor[600],
+            color: blueColor[600],
           },
           "&.Mui-error": {
-            color: errorColor[700],
+            color: redColor[700],
           },
         },
       },
