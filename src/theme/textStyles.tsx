@@ -1,5 +1,6 @@
 // src/theme/textStyles.tsx
 import { styled, Theme, Typography, TypographyProps } from '@mui/material';
+import { greyColor } from './theme';
 
 export const defaultFonts = {
   letter: {
@@ -27,7 +28,7 @@ export const defaultParagraph = () => ({
   fontFamily: defaultFonts.family.textos,
   fontWeight: "normal",
   letterSpacing: defaultFonts.letter.normal,
-  color: "inherit",
+  color: greyColor[950],
   lineHeight: 1.3,
 });
 
@@ -35,21 +36,21 @@ export const defaultCTA = () => ({
   fontFamily: defaultFonts.family.textos,
   fontWeight: "normal",
   letterSpacing: defaultFonts.letter.wide,
-  color: "inherit",
+  color: greyColor[950],
 });
 
 export const defaultHeading = () => ({
   fontFamily: defaultFonts.family.titulos,
   letterSpacing: defaultFonts.letter.normal,
   fontWeight: 500,
-  color: "inherit",
+  color: greyColor[950],
   // lineHeight: 1.2,
 });
 
 export const inputAdvice = () => ({
   fontFamily: defaultFonts.family.textos,
   fontSize: "0.75rem", // 12px
-  color: "inherit",
+  color: greyColor[950],
 });
 
 // Helper para recibir sx extra
@@ -243,7 +244,7 @@ interface Props {
 }
 export const SectionHeading: React.FC<Props> = ({ children, sx, id }) => {
   return (
-    <Heading1
+    <Heading2
       id={id}
       sx={{
         marginTop: {xs:customFonts.space.large, lg:customFonts.space.large},
@@ -251,13 +252,13 @@ export const SectionHeading: React.FC<Props> = ({ children, sx, id }) => {
         textAlign: "center",
       ...sx }}>
       { children }
-    </Heading1>
+    </Heading2>
   )
 };
 
 export const SectionSubHeading: React.FC<Props> = ({ children, sx, id }) => {
   return (
-    <BodyL
+    <BodyM
     id={id}
     sx={{
       textAlign: "center", 
@@ -268,6 +269,6 @@ export const SectionSubHeading: React.FC<Props> = ({ children, sx, id }) => {
       ...sx}}
     >
       { children }
-    </BodyL>
+    </BodyM>
   )
 }
