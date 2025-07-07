@@ -3,8 +3,8 @@ import { Box, Card } from "@mui/material"
 import { BodyLEmph, BodyS, Caption, Heading5 } from "@/theme/textStyles"
 import { WhiteButton } from "@shared/components/buttons/WhiteButton"
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import { IProduct } from "@/modules/home/components/Highlights";
 import { blueColor, greyColor, orangeColor } from "@/theme/theme";
+import { IProduct } from "./types";
 
 
 export const ProductCard: React.FC<{
@@ -14,7 +14,7 @@ export const ProductCard: React.FC<{
     <Card 
     elevation={4}
     sx={{
-      width: '100%',
+      width: '250px',
       height: '500px',
       display: 'flex',
       flexDirection: 'column',
@@ -37,10 +37,10 @@ export const ProductCard: React.FC<{
       </Box>
       <Box sx={{ width: "100%", height: "50%", display: "flex", justifyContent: "center", alignItems: "center", overflow: 'hidden',}}>
         <Box component="picture" display="block" sx={{ minWidth: '100%', minHeight: '100%' }}>
-          <source srcSet={product.imageA} type="image/webp" />
+          <source srcSet={product.urlPhoto} type="image/webp" />
           <Box
             component="img"
-            src={product.imageB}
+            src={product.urlPhoto}
             alt="Foto descriptiva"
             loading="lazy"
             sx={{
@@ -59,7 +59,7 @@ export const ProductCard: React.FC<{
         justifyContent: "space-between",
         padding: "1rem"
       }}>
-        <Heading5 sx={{height: "2.5em", lineHeight: 1.2}}>{product.name}</Heading5>
+        <Heading5 sx={{height: "2.5em", lineHeight: 1.2}}>{product.title}</Heading5>
         <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
           <BodyLEmph>$ {product.priceDiscount}</BodyLEmph>
           <Caption sx={{textDecoration: "line-through"}}>$ {product.price}</Caption>
@@ -74,7 +74,7 @@ export const ProductCard: React.FC<{
         <WhiteButton
           text="AÑADIR AL CARRITO"
           fetchingText="AÑADIENDO..."
-          onClick={() => console.log(`se quizo añadir ${product.name}`)}
+          onClick={() => console.log(`se quizo añadir ${product.title}`)}
           isFetching={false}
           icon={<ShoppingCartOutlinedIcon />}
           disabled={false}
