@@ -16,7 +16,9 @@ import logoTextHorizontal from '@img/logo_nombre.svg';
 import logoTextVertical from '@img/logo_img.svg';
 import inpulseLogo from "@img/inpulse_design_logo_negro_color.svg";
 
-import { Menu as MenuIcon, Close as CloseIcon, ShoppingCart as ShoppingCartIcon } from '@mui/icons-material';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 import { BodyS, Heading2 } from '@theme/textStyles';
 import { useNavigate } from 'react-router-dom';
 import { isNavBarTransparent, menuItems, navBarDesktopHeight, navBarMobileHeight, productsItems } from '../utils/info';
@@ -140,7 +142,7 @@ export const HeaderOneLine: React.FC = () => {
                   <IconButton onClick={() => navigate("/cart")} sx={{ mx: 2 }}>
                     {/* <Badge badgeContent={cartItems.length} color="primary"> */}
                     <Badge badgeContent={"1"} color="primary">
-                      <ShoppingCartIcon />
+                      <ShoppingCartOutlinedIcon />
                     </Badge>
                   </IconButton>
                 </Box>
@@ -175,7 +177,7 @@ export const HeaderOneLine: React.FC = () => {
                   <IconButton onClick={() => navigate("/cart")} sx={{ mx: 2 }}>
                     {/* <Badge badgeContent={cartItems.length} color="primary"> */}
                     <Badge badgeContent={"1"} color="primary">
-                      <ShoppingCartIcon />
+                      <ShoppingCartOutlinedIcon />
                     </Badge>
                   </IconButton>
                   {menuItems.map((item) => (

@@ -18,12 +18,13 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
-import { BodyS, Heading5, TextBox } from '@theme/textStyles';
+import { BodyS, Heading5 } from '@theme/textStyles';
 import { useNavigate } from 'react-router-dom';
 import { isNavBarTransparent, menuItems, navBarDesktopHeight, navBarMobileHeight, productsItems } from '../utils/info';
 import { SearchField } from './SearchField';
 import { greyColor } from '@/theme/theme';
 import { LoginButton } from './LoginButton';
+import { CartButton } from './CartButton';
 
 
 export const HeaderTwoLines: React.FC = () => {
@@ -186,13 +187,7 @@ export const HeaderTwoLines: React.FC = () => {
                     flex: 1,
                   }}>
                     {/* TODO: refactorizar boton de carrito */}
-                    <IconButton onClick={() => navigate("/cart")} sx={{ width: "100px" }}>
-                      {/* <Badge badgeContent={cartItems.length} color="primary"> */}
-                      <Badge badgeContent={"1"} color="primary">
-                        <ShoppingCartOutlinedIcon />
-                      </Badge>
-                      <TextBox sx={{ color: greyColor[600] }}>Carrito</TextBox>
-                    </IconButton>
+                    <CartButton />
                     <LoginButton />
 
                     {/* {menuItems.map((item) => (
