@@ -40,7 +40,7 @@ export const ColorButton: React.FC<ColorButtonProps> = ({
       ...sx,
     }}
   >
-      <span>{isFetching && fetchingText ? fetchingText : text }</span>
+      <span>{isFetching && !!fetchingText ? fetchingText : text }</span>
       {isFetching && <CircularProgress size={20} sx={{ color: greyColor[950] }} />}
     </Button>
   );
