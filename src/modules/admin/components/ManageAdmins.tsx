@@ -72,12 +72,14 @@ export const ManageAdmins: React.FC = () => {
             </Box>
             <Box sx={{display: 'flex', gap: '1rem'}}>
               <WhiteButton
+                id={`bt-delete-admin-${index}`}
                 onClick={() => handleDelete(user.id)}
                 isFetching={false}
                 icon={<DeleteForeverOutlinedIcon sx={{color: redColor[500], fontSize: '1.3rem'}} />}
                 disabled={false}
               />
               <WhiteButton
+                id={`bt-edit-admin-${index}`}
                 onClick={() => handleDelete(user.id)}
                 isFetching={false}
                 icon={<DriveFileRenameOutlineOutlinedIcon sx={{fontSize: '1.3rem'}} />}

@@ -105,6 +105,7 @@ export const CreateAdmin: React.FC = () => {
           {formik.touched.email && formik.errors.email}
         </InputError>
         <ColorButton
+          id="create-admin-bt"
           type="blueButton"
           onClick={() => formik.handleSubmit()}
           text="Crear Administrador"

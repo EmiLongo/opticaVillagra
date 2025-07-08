@@ -193,6 +193,7 @@ export const RegisterPage: React.FC = () => {
                   No coinciden */}
 
             <ColorButton
+              id="bt-register-page"
               type="blueButton"
               onClick={() => formik.handleSubmit()}
               text="REGISTRARME"

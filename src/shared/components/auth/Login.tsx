@@ -110,6 +110,7 @@ export const Login: React.FC<LoginProps> = ({
       </InputError>
       <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "space-between", width: "100%", gap: "1rem" }}>
       <OnlyTextButton
+        id="bt-forget-pass"
         text="OLVIDÉ MI CONTRASEÑA" 
         isFetching={formik.isSubmitting}
         disabled={formik.isSubmitting}
@@ -124,6 +125,7 @@ export const Login: React.FC<LoginProps> = ({
         onClick={() => setIsOpenForgetPass(true)}
       />
       <ColorButton
+        id="bt-header-login"
         type="blueButton"
         fetchingText="...enviando"
         isFetching={formik.isSubmitting}
@@ -133,6 +135,7 @@ export const Login: React.FC<LoginProps> = ({
         onClick={() => formik.handleSubmit()}
       />
       <OnlyTextButton
+        id="bt-header-register"
         text="Registrarme" 
         isFetching={formik.isSubmitting}
         disabled={formik.isSubmitting} 

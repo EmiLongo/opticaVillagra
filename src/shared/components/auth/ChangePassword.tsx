@@ -157,6 +157,7 @@ export const ChangePassword: React.FC = () => {
                   No coinciden */}
 
             <ColorButton
+              id="bt-password-change"
               type="blueButton"
               onClick={() => formik.handleSubmit()}
               text="GUARDAR CAMBIOS"

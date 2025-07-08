@@ -79,6 +79,7 @@ export const ForgetPass: React.FC<ForgetPassProps> = ({ isModal = false, setIsOp
       </InputError>
 
       <ColorButton
+        id="bt-forget-password"
         type="blueButton"
         fetchingText="...enviando correo"
         isFetching={formik.isSubmitting}

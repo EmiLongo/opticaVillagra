@@ -125,6 +125,7 @@ export const Profile: React.FC = () => {
               No coinciden */}
 
         <ColorButton
+          id="bt-profile-changes"
           type="blueButton"
           onClick={() => formik.handleSubmit()}
           text="GUARDAR CAMBIOS"
