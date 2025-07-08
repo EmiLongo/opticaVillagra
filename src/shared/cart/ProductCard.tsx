@@ -1,15 +1,18 @@
 import React from "react"
 import { Box, Card } from "@mui/material"
-import { BodyLEmph, BodyS, Caption, Heading5 } from "@/theme/textStyles"
+import { BodyS, Caption, Heading3, Heading5 } from "@/theme/textStyles"
 import { WhiteButton } from "@shared/components/buttons/WhiteButton"
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { blueColor, greyColor, orangeColor } from "@/theme/theme";
-import { IProduct } from "./types";
+import { IProduct } from "../components/types";
+import { numberToPrice } from "../utils/convertNumberToPrice";
 
+interface IProductCard {
+  product: IProduct;
+  index: number;
+}
 
-export const ProductCard: React.FC<{
-  product: IProduct
-}> = ({ product }) => {
+export const ProductCard: React.FC<IProductCard> = ({ product, index }) => {
   return (
     <Card 
     elevation={4}
@@ -59,19 +62,20 @@ export const ProductCard: React.FC<{
         justifyContent: "space-between",
         padding: "1rem"
       }}>
-        <Heading5 sx={{height: "2.5em", lineHeight: 1.2}}>{product.title}</Heading5>
-        <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-          <BodyLEmph>$ {product.priceDiscount}</BodyLEmph>
-          <Caption sx={{textDecoration: "line-through"}}>$ {product.price}</Caption>
+        <Heading5 sx={{height: "2.5em"}}>{product.title}</Heading5>
+        <Box sx={{display: "flex", alignItems: "center", gap: "16px"}}>
+          <Heading3>{numberToPrice(product.priceDiscount)}</Heading3>
+          <BodyS sx={{color: greyColor[700], textDecoration: "line-through"}}>{numberToPrice(product.price)}</BodyS>
         </Box>
         <Box sx={{display: "flex", flexDirection: "column", gap: "5px"}}>
-          <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-            <BodyS sx={{color: blueColor[700]}}>$ {product.priceTransfer}</BodyS>
-            <Caption>Transf./ Depósito</Caption>
+          <Box sx={{display: "flex", alignItems: "center", gap: "8px"}}>
+            <BodyS sx={{color: blueColor[700]}}>{numberToPrice(product.priceTransfer)}</BodyS>
+            <BodyS sx={{color: greyColor[700]}}>Transf./ Depósito</BodyS>
           </Box>
           <BodyS sx={{color: blueColor[700]}}>{product.plan}</BodyS>
         </Box>
         <WhiteButton
+          id={`add-cart-${index}`}
           text="AÑADIR AL CARRITO"
           fetchingText="AÑADIENDO..."
           onClick={() => console.log(`se quizo añadir ${product.title}`)}
