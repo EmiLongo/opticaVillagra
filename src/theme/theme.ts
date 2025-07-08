@@ -111,7 +111,7 @@ export const theme = createTheme({
       ...orangeColor,
     },
     background: {
-      // default: "#18222986",
+      default: greyColor[50],
       paper: greyColor[50],
     },
     text: {
@@ -162,12 +162,13 @@ export const theme = createTheme({
           gap: "0.5rem",
           height: "40px",
           width: "40px",
-          border: `1px solid ${greyColor[600]}`,
+          border: `1px solid ${greyColor[950]}`,
           borderRadius: "30px",
-          color: greyColor[600],
+          color: greyColor[950],
           "&:hover": {
             borderColor: greyColor[700],
-            color: greyColor[700],
+            backgroundColor: greyColor[300],
+            color: "primary.main",
           },
         },
       },
