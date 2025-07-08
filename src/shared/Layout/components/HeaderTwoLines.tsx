@@ -9,26 +9,22 @@ import {
   List,
   useMediaQuery,
   useTheme,
-  Badge
 } from '@mui/material';
 import logoTextHorizontal from '@img/logo_nombre.svg';
 import logoTextVertical from '@img/logo_img.svg';
 import inpulseLogo from "@img/inpulse_design_logo_negro_color.svg";
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
 import { BodyS, Heading5 } from '@theme/textStyles';
-import { useNavigate } from 'react-router-dom';
 import { isNavBarTransparent, menuItems, navBarDesktopHeight, navBarMobileHeight, productsItems } from '../utils/info';
 import { SearchField } from './SearchField';
 import { greyColor } from '@/theme/theme';
 import { LoginButton } from './LoginButton';
-import { CartButton } from './CartButton';
+import { CartButton } from '../../cart/CartButton';
 
 
 export const HeaderTwoLines: React.FC = () => {
-  const navigate = useNavigate();
   const theme = useTheme();
   const { palette } = theme;
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -122,9 +118,9 @@ export const HeaderTwoLines: React.FC = () => {
       sx={{
         width: "100%",
         height: isMobile ? navBarMobileHeight : navBarDesktopHeight, 
-        backgroundColor: "#f3f6fc82",
-        backdropFilter: "blur(10px) saturate(180%)",
-        WebkitBackdropFilter: "blur(10px) saturate(180%)",
+        backgroundColor: "backcground.default",
+        // backdropFilter: "blur(10px) saturate(180%)",
+        // WebkitBackdropFilter: "blur(10px) saturate(180%)",
       }}
       >
         <Box sx={{ height: '100%', width: "100%" }}>
@@ -148,12 +144,7 @@ export const HeaderTwoLines: React.FC = () => {
                   height="60px"
                   onClick={handleLogoClick}
                   />
-                  <IconButton onClick={() => navigate("/cart")} sx={{ mx: 2 }}>
-                    {/* <Badge badgeContent={cartItems.length} color="primary"> */}
-                    <Badge badgeContent={"1"} color="primary">
-                      <ShoppingCartOutlinedIcon />
-                    </Badge>
-                  </IconButton>
+                  <CartButton />
                 </Box>
               </Toolbar>
             ) : (
