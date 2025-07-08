@@ -1,12 +1,12 @@
 // src/store/useUserStore.ts
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { User } from '../api/authApi';
+import { IUser } from '../api/authApi';
 
 type UserState = {
-  user: User | null;
+  user: IUser | null;
   token: string | null;
-  setUser: (user: User, token: string) => void;
+  setUser: (user: IUser, token: string) => void;
   logout: () => void;
   isAuthenticated: () => boolean;
 };
