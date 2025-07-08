@@ -1,5 +1,5 @@
 // src/modules/home/components/Highlights.tsx
-import { ProductCard } from "@shared/components/ProductCard"
+import { ProductCard } from "@/shared/cart/ProductCard"
 
 import { Box } from "@mui/material"
 import React from "react"
@@ -114,8 +114,8 @@ export const Highlights: React.FC = () => {
         gridTemplateColumns: {xs: "1fr", sm: "repeat(2, 1fr)", md: "repeat(3, 1fr)", lg: "repeat(4, 1fr)", xl: "repeat(5, 1fr)"},
         gap: {xs: "1rem", md: "1.5rem", lg: "2rem"},
       }}>
-        {products.map((product) => (
-          <ProductCard product={product} />
+        {products.map((product, index) => (
+          <ProductCard product={product} index={index} />
         ))}
       </Box>
     </Box>
