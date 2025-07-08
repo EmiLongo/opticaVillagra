@@ -4,6 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { BodyS, Heading2 } from "@/theme/textStyles";
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { ICart } from "./types";
+import { CartDrawerItem } from "./CartDrawerItem";
 
 interface ICartDrawerProps {
   openCartDrawer: boolean
@@ -79,11 +80,16 @@ export const CartDrawer: React.FC<ICartDrawerProps> = ({openCartDrawer = false, 
       open={openCartDrawer}
       onClose={closeCartDrawer}
       sx={{
-        display: { xs: 'none', md: 'block' },
         '& .MuiDrawer-paper': { boxSizing: 'border-box'},
       }}
     >
-      <Box sx={{position: 'relative', height: '100%', width: "30vw", minWidth: "420px", padding: "12px" }}>
+      <Box sx={{
+        position: 'relative', 
+        height: '100%', 
+        width: {xs: "100vw", md:"30vw"}, 
+        minWidth: {xs: "unset", md: "420px"}, 
+        padding: "12px" 
+      }}>
         <Box
           sx={{ position: 'absolute', top: "1rem", right: "1rem" }}
           onClick={closeCartDrawer}
@@ -95,6 +101,10 @@ export const CartDrawer: React.FC<ICartDrawerProps> = ({openCartDrawer = false, 
           <AccountCircleOutlinedIcon />
           <BodyS>maildeejemplo@gmail.com</BodyS>
         </Box>
+        {mockCart.cartItems.map((cartItem, index)=>(
+          <CartDrawerItem cartItem={cartItem} index={index} />
+        ))
+        }
       </Box>
     </Drawer>
   )
