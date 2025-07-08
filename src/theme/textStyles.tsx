@@ -27,7 +27,7 @@ export const customFonts = {
 export const defaultHeading = () => ({
   fontFamily: defaultFonts.family.titulos,
   letterSpacing: defaultFonts.letter.normal,
-  fontWeight: 600,
+  fontWeight: 500,
   color: greyColor[950],
   // lineHeight: 1.2,
 });
@@ -47,10 +47,9 @@ export const defaultCTA = () => ({
   color: greyColor[950],
 });
 
-export const inputAdvice = () => ({
+export const defaultInput = () => ({
   fontFamily: defaultFonts.family.textos,
-  fontSize: "0.75rem", // 12px
-  color: greyColor[950],
+  color: greyColor[800],
 });
 
 export const defaultButtons = () => ({
@@ -252,12 +251,24 @@ export const TextBox = styled((props: TypographyProps) => <Typography {...props}
 }));
 
 // INPUTS
-export const InputAdvice = styled((props: TypographyProps) => <Typography {...props} />)(() => ({
-  ...inputAdvice(),
+export const InputLabel = styled((props: TypographyProps) => <Typography {...props} />)(() => ({
+  ...defaultInput(),
+    fontSize: "14px",
+
+}));
+export const InputField = styled((props: TypographyProps) => <Typography {...props} />)(() => ({
+  ...defaultInput(),
+    fontSize: "16px",
+
+}));
+export const InputHelper = styled((props: TypographyProps) => <Typography {...props} />)(() => ({
+  ...defaultInput(),
+    fontSize: "12px",
+
 }));
 
 export const InputError = styled((props: TypographyProps) => <Typography {...props} />)(({ theme }) => ({
-  ...inputAdvice(),
+  ...defaultInput(),
   color: theme.palette.error.main,
 }));
 
