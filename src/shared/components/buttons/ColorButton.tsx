@@ -4,6 +4,7 @@ import { Button, CircularProgress } from "@mui/material";
 import { greyColor, blueColor, orangeColor } from "@/theme/theme";
 
 type ColorButtonProps = {
+  id: string
   type: "greenButton" | "blueButton";
   onClick: () => void;
   text: string;
@@ -14,6 +15,7 @@ type ColorButtonProps = {
 };
 
 export const ColorButton: React.FC<ColorButtonProps> = ({
+  id,
   type = "blueButton", //lightGreenButton, greenButton, yellowButton, brownButton
   onClick = () => {},
   text = "",
@@ -23,7 +25,7 @@ export const ColorButton: React.FC<ColorButtonProps> = ({
   sx = {},
 }) => {
   return (
-    <Button
+    <Button id={id}
     onClick={onClick}
     disabled={disabled || isFetching}
     sx={{

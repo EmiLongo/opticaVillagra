@@ -8,6 +8,7 @@ import {
 import { greyColor, blueColor, orangeColor } from "@/theme/theme";
 
 type OnlyTextButtonProps = {
+  id: string;
   type: "greenButton" | "blueButton";
   onClick: () => void;
   text: string;
@@ -19,6 +20,7 @@ type OnlyTextButtonProps = {
 };
 
 export const OnlyTextButton: React.FC<OnlyTextButtonProps> = ({
+  id,
   onClick = () => {},
 	type = "blueButton",
   text = "",
@@ -32,6 +34,7 @@ export const OnlyTextButton: React.FC<OnlyTextButtonProps> = ({
 
   return (
     <Button
+      id={id}
       variant="contained"
       size="small"
       onClick={onClick}
