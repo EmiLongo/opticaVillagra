@@ -185,9 +185,10 @@ export const theme = createTheme({
         root: {
           fontFamily: defaultFonts.family.textos,
           color: greyColor[950],
-          borderRadius: "4px",
+          height: "40px",
+          borderRadius: "40px",
           "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: greyColor[600],
+            borderColor: greyColor[950],
           },
           "&:hover .MuiOutlinedInput-notchedOutline": {
             borderColor: greyColor[700],
@@ -205,8 +206,10 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           fontFamily: defaultFonts.family.textos,
+          transform: "translate(14px, 9px) scale(1)",
           color: greyColor[800],
           "&.Mui-focused": {
+            transform: "translate(16px, -9px) scale(0.7)",
             color: blueColor[600],
           },
           "&.Mui-error": {
