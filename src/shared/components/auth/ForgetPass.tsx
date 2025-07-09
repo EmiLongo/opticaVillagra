@@ -13,14 +13,14 @@ const validationSchema: Yup.ObjectSchema<{email: string}> = Yup.object({
   email: Yup.string().email('Correo inválido').required('Requerido'),
 });
 
-type ForgetPassProps = {
+interface IForgetPassProps {
   handleClose?: () => void;
   isModal?: boolean;
   setIsOpenDrawer?: (isOpen: boolean) => void;
 }
 
 
-export const ForgetPass: React.FC<ForgetPassProps> = ({ isModal = false, setIsOpenDrawer = () => {}, handleClose = () => {} }) => {
+export const ForgetPass: React.FC<IForgetPassProps> = ({ isModal = false, setIsOpenDrawer = () => {}, handleClose = () => {} }) => {
   // const [showPassword, setShowPassword] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
