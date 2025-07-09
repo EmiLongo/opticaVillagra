@@ -2,65 +2,29 @@ import React from "react";
 import {
   Box,
   List,
-  ListItem,
   Container,
-  Link,
-  useTheme,
-  Divider,
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
 
-import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
-import inpulseLogo from "@img/inpulse_design_logo_blanco.svg";
-import logoContraste from "@img/logo.svg";
-import { menuItems } from "../utils/info";
+// import inpulseLogo from "@img/inpulse_design_logo_blanco.svg";
+import logoContraste from "@img/logo_nombre_vertical.svg";
+import { productsItems } from "../utils/info";
 import {
-  BodyM,
-  Heading2,
+  BodyS,
+  CaptionAlt,
+  Heading5,
 } from "@/theme/textStyles";
 import { toast } from "react-toastify";
+import { greyColor } from "@/theme/theme";
+import { OnlyTextButton } from "@/shared/components/buttons/OnlyTextButton";
+import { useNavigate } from "react-router-dom";
+import { NewsletterForm } from "./NewsletterForm";
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
 
 export const Footer: React.FC = () => {
-  const theme = useTheme();
-  const { palette } = theme;
-  // Estilos personalizados
-  const StyledFooter = styled("footer")({
-    backgroundColor: palette.primary[900],
-    color: palette.primary.light,
-    paddingTop: "2rem",
-    paddingBottom: "1rem",
-  });
 
-  const FooterList = styled(List)(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  listStyleType: "none",
-  margin: 0,
-  padding: 0,
-  // gap: "1.5rem",
-  flexWrap: "wrap",
-  [theme.breakpoints.up('md')]: {
-    flexDirection: "row",
-    gap: "2rem",
-  },
-  }));
-
-  const FooterListItem = styled(ListItem)(({ theme }) => ({
-    flex: 1,
-      margin: 0,
-    paddingRight: "0.5rem",
-    [theme.breakpoints.up('md')]: {
-      paddingRight: "1rem",
-    },
-  }));
-
-  const FooterLink = styled(Link)({
-    textDecoration: "none",
-    color: palette.primary.light,
-    "&:hover": {
-      color: palette.primary[400],
-    },
-  });
+  const navigate = useNavigate();
 
   // Función para compartir URL
   const shareURL = () => {
@@ -81,136 +45,209 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <StyledFooter id="footer" sx={{ paddingX: {xs: "1rem", md: "2rem", lg: "unset"},}}>
-      <Container maxWidth="lg">
+    <Box 
+      id="footer" 
+      component="footer" 
+      sx={{
+        backgroundColor: "background.paper",
+        color: greyColor[950], 
+        borderTop: `1px ${greyColor[400]} solid`,
+        paddingTop: "24px"
+      }}
+    >
+      <Container sx={{maxWidth: {xs: "unset", sm:"550px", lg:"950px"}}}>
         <Box
           id="footerContainer"
           sx={{
-            display: "flex",
-            justifyContent: {xs: "space-around", md: "space-between"},
-            flexWrap: "wrap",
-            gap: { xs: 4 },
+            width: "100%",
+            display: "grid",
+            // justifyContent: "space-between",
+            gridTemplateColumns: {xs: "repeat(2, auto)", sm: "repeat(2, auto)", lg: "1fr repeat(2, 2fr) 4fr;"},
+            gridTemplateRows: {xs:"repeat(5, auto)", sm: "repeat(3, auto)", lg: "repeat(2, auto)"},
+            // gap: "auto", 
+            columnGap: "2.5rem",
+            // gridColumnGap: "0px",
+            rowGap: {xs: "20px", sm:"20px", lg:"0px"},
           }}
         >
+          {/* Logo */}
           <Box
-            id="footerLeft"
+            component={"img"}
+            src={logoContraste}
+            alt="Óptica Villagra Blanco y Negro"
+            decoding="async"
+            loading="lazy"
+            onClick={shareURL}
             sx={{
-              maxWidth: "100%",
+              width: "70px",
+              gridArea: {xs:"2 / 1 / 3 / 2", sm:"1 / 1 / 2 / 2", lg:"1 / 1 / 3 / 2"},
+            }}
+          />
+
+          {/* Categorías */}
+          <Box
+            sx={{
               display: "flex",
               flexDirection: "column",
-              gap: "2rem",
+              gap: "8px",
+              gridArea: {xs: "4 / 1 / 5 / 3", sm: "2 / 1 / 3 / 2", lg:"1 / 2 / 2 / 3"},
             }}
           >
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "1rem",
-              }}
-            >
-              <Box
-                component={"img"}
-                src={logoContraste}
-                alt="Óptica Villagra Blanco y Negro"
-                decoding="async"
-                loading="lazy"
-                sx={{
-                  height: {xs: "40px", md: "70px"},
-                }}
-              />
-              <Box
-                id="shareURL"
-                onClick={shareURL}
-                sx={{
-                  cursor: "pointer",
-                  userSelect: "none",
-                  display: "flex",
-                  alignItems: "center",
-                }}
-              >
-                <ShareOutlinedIcon
-                  width={24}
-                  height={24}
-                  sx={{ verticalAlign: "middle", marginRight: 1 }}
-                />
-                <BodyM sx={{ color: palette.primary[100], fontWeight: 400 }}>
-                  Compartir página
-                </BodyM>
-              </Box>
-            </Box>
-          </Box>
-            <Box id="footerRight" sx={{ display: "flex", flexDirection: "column", justifyContent: "center"}}>
-              <Heading2 sx={{ color: palette.primary[100], textAlign: "center", textTransform: "none", marginBottom: {xs: "1rem", sm: "unset"} }}>Nuestra Web:</Heading2>
-              <Box>
-                <FooterList>
-                  <FooterListItem id="footerListItem-home">
-                    <FooterLink href="#hero">
-                      <BodyM sx={{ color: "inherit" }}>Home</BodyM>
-                    </FooterLink>
-                  </FooterListItem>
-                  {menuItems.map((item) => (
-                    <FooterListItem
-                      key={item.text}
-                      id={`footerListItem-${item.text}`}
-                    >
-                      <FooterLink href={item.path}>
-                        <BodyM sx={{ color: "inherit", textAlign: "center" }}>{item.text}</BodyM>
-                      </FooterLink>
-                    </FooterListItem>
-                  ))}
-                </FooterList>
-              </Box>
-            </Box>
-        </Box>
-        <Divider
-        component="hr"
-        variant="fullWidth"
-        aria-hidden="true"
-        sx={{ 
-          marginTop: "2rem", 
-          marginBottom: "1rem", 
-          backgroundColor: palette.primary[100] 
-        }} 
-        />
-        <Box
-          id="footerBottom"
-          sx={{
-            display: "flex",
-            flexDirection: { xs: "column", md: "row" },
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "0.5rem",
-            marginTop: "2rem",
-          }}
-        >
-          <BodyM sx={{ color: "inherit",textAlign: "center" }}>
-            Derechos reservados © {new Date().getFullYear()}.
-          </BodyM>
-          <Box
-            component={"a"}
-            href="https://inpulse.com.ar"
-            target="_blank"
-            rel="noopener noreferrer"
+            <Heading5 
             sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: "0.75rem",
-            }}
-          >
-            <BodyM sx={{ color: "inherit",textAlign: "center" }}>
-              Desarrollado por
-            </BodyM>
-            <Box
-              component={"img"}
-              src={inpulseLogo}
-              alt="Logo Inpulse Design"
-              width={100}
-              decoding="async"
-              loading="lazy"
+              width: {xs: "100%", md: "unset"},
+              textAlign: {xs: "center", md: "left"}
+            }}>
+              Categorías</Heading5>
+            <List sx={{display: {xs: "flex", md:"column", flexWrap: "wrap"}}}>
+              {productsItems.map((item) => (
+                <Box key={item.text} component={"a"} href={item.path}>
+                  <BodyS sx={{ width: {xs: "45vw", md: "unset"}, marginBottom:{xs:"10px", md:"unset"}, color: greyColor[800], "&:hover":{color: "text.primary"}}}>
+                    {item.text}
+                  </BodyS>
+                </Box>
+              ))}
+            </List>
+          </Box>
+
+          {/* Términos y Condiciones */}
+          <Box sx={{
+            gridArea: {xs: "5 / 1 / 6 / 3", sm:"3 / 1 / 4 / 2" , lg: "2 / 2 / 3 / 3"},
+            display: {xs: "flex", sm:"block"},
+            justifyContent: "space-between"
+          }}>
+            <OnlyTextButton
+              id="bt-footer-terms-conditions"
+              onClick={()=>navigate("./terms-and-conditions")}
+              type="blueButton"
+              text="Términos y condiciones"
+              isFetching={false}
+              disabled={false}
+              sx={{
+                textWrap: "nowrap"
+              }}
+            />
+            <OnlyTextButton
+              id="bt-footer-privacy-policy"
+              onClick={()=>navigate("./privacy-policy")}
+              type="blueButton"
+              text="Políticas de privacidad"
+              isFetching={false}
+              disabled={false}
+              sx={{
+                textWrap: "nowrap"
+              }}
             />
           </Box>
+
+          {/* Contacto */}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: {xs: "start", sm: "center", lg: "start"},
+              gap: "8px",
+              gridArea: {xs: "2 / 2 / 4 / 3", sm: "2 / 2 / 3 / 3" , lg: "1 / 3 / 2 / 4"},
+            }}
+          >
+            <Heading5 sx={{width: {xs: "unset",sm: "210px", lg:"unset"},}}>Contáctanos</Heading5>
+            <List sx={{width: {xs: "unset",sm: "210px", lg:"unset"},}}>
+              <BodyS sx={{ color: greyColor[800] ,"&:hover":{color: "text.primary"}}}>
+                Mitre 1745, S. C. de Bariloche.
+              </BodyS>
+              <BodyS sx={{ color: greyColor[800] ,"&:hover":{color: "text.primary"}}}>
+                Rio Negro, Argentina.
+              </BodyS>
+              <BodyS sx={{ color: greyColor[800] ,"&:hover":{color: "text.primary"}}}>
+                CP 8400
+              </BodyS>
+              <BodyS sx={{ color: greyColor[800] ,"&:hover":{color: "text.primary"}}}>
+                +54 9 11 6298 4904
+              </BodyS>
+              <BodyS sx={{ color: greyColor[800] ,"&:hover":{color: "text.primary"}}}>
+                info@kostentrek.com
+              </BodyS>
+            </List>
+          </Box>
+
+          {/* Redes Sociales */}
+          <Box sx={{
+            width: {xs: "unset",sm: "210px", lg:"unset"},
+            display:"flex", 
+            justifyContent: {xs: "start", sm: "center", lg: "start"},
+            gap: "8px", 
+            gridArea: {xs: "3 / 1 / 4 / 2", sm: "3 / 2 / 4 / 3" , lg: "2 / 3 / 3 / 4"},
+          }}>
+          <WhatsAppIcon width={20} sx={{color: "primary.main"}} />
+          <InstagramIcon width={20} sx={{color: "primary.main"}} />
+          <FacebookIcon width={20} sx={{color: "primary.main"}} />
+          </Box>
+
+          {/* Newsletter */}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "8px",
+              gridArea: {xs: "1 / 1 / 2 / 3", sm: "1 / 2 / 2 / 3" , lg: "1 / 4 / 3 / 5"},
+            }}
+          >
+            <Heading5 sx={{textWrap: "nowrap"}}>Recibí novedades y enterate de las ofertas!</Heading5>
+            <NewsletterForm />
+          </Box>
+
+          
+          {/* <Divider
+          component="hr"
+          variant="fullWidth"
+          aria-hidden="true"
+          sx={{ 
+            marginTop: "2rem", 
+            marginBottom: "1rem", 
+            backgroundColor: palette.primary[100] 
+          }} 
+          /> */}
+          <Box
+            id="footerBottom"
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "0.5rem",
+              marginTop: "2rem",
+            }}
+          >
+          </Box>
         </Box>
+        {/* service Mark y Trade Mark ℠™ */}
+            <CaptionAlt sx={{ color: "inherit", textAlign: "center", marginY: "1rem" }}>
+              {new Date().getFullYear()} | TM Todos los derechos reservados.
+            </CaptionAlt>
+            {/* <Box
+              component={"a"}
+              href="https://inpulse.com.ar"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.75rem",
+              }}
+            >
+              <BodyM sx={{ color: "inherit",textAlign: "center" }}>
+                Desarrollado por
+              </BodyM>
+              <Box
+                component={"img"}
+                src={inpulseLogo}
+                alt="Logo Inpulse Design"
+                width={100}
+                decoding="async"
+                loading="lazy"
+              />
+            </Box> */}
       </Container>
-    </StyledFooter>
+    </Box>
   );
 };
