@@ -9,7 +9,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 export const navBarLines: number = 2;   //  1
 export const isNavBarTransparent: boolean = false;
 export const navBarDesktopHeight: string = "150px";
-export const navBarMobileHeight: string = "70px";
+export const navBarMobileHeight: string = "60px";
 
 
 
@@ -18,15 +18,12 @@ export const productsItems = [
   { text: 'Armazones de Receta', path: '/armazones-receta' },
   { text: 'Clip-On', path: '/clip-on' },
   { text: 'Indestructibles', path: '/indestructibles' },
-  { text: 'Quiénes somos', path: '/about-us' },
 ];
 
 export const menuItems = [
   // { text: 'Inicio', path: '#home' },
-  { text: 'Que hacemos', path: '#whatwedo' },
-  { text: 'Servicios', path: '#services' },
-  { text: 'Equipamiento', path: '#equipment' },
-  { text: 'Contacto', path: '#contact' },
+  { text: 'Quiénes somos', path: '/about-us' },
+  
 ];
 
 export interface IContactInfo {
