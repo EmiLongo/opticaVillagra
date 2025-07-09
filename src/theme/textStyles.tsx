@@ -54,9 +54,8 @@ export const defaultInput = () => ({
 
 export const defaultButtons = () => ({
   fontFamily: defaultFonts.family.textos,
-  fontWeight: 600,
+  fontWeight: 700,
   letterSpacing: defaultFonts.letter.normal,
-  color: greyColor[950],
 });
 // Helper para recibir sx extra
 
