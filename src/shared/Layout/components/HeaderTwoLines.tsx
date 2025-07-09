@@ -11,17 +11,17 @@ import {
   useTheme,
 } from '@mui/material';
 import logoTextHorizontal from '@img/logo_nombre.svg';
-import logoTextVertical from '@img/logo_img.svg';
-import inpulseLogo from "@img/inpulse_design_logo_negro_color.svg";
+import logoTextVertical from '@img/logo_nombre_vertical.svg';
+// import inpulseLogo from "@img/inpulse_design_logo_negro_color.svg";
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
-import { BodyS, Heading5 } from '@theme/textStyles';
+import { Heading5 } from '@theme/textStyles';
 import { isNavBarTransparent, menuItems, navBarDesktopHeight, navBarMobileHeight, productsItems } from '../utils/info';
 import { SearchField } from './SearchField';
 import { greyColor } from '@/theme/theme';
 import { LoginButton } from './LoginButton';
-import { CartButton } from '../../cart/CartButton';
+import { CartButton } from '@shared/cart/CartButton';
 
 
 export const HeaderTwoLines: React.FC = () => {
@@ -36,7 +36,7 @@ export const HeaderTwoLines: React.FC = () => {
   };
   
   const handleLogoClick = () => {
-    window.location.href = '#hero';
+    window.location.href = './';
   };
 
   const drawer = (
@@ -78,7 +78,7 @@ export const HeaderTwoLines: React.FC = () => {
           </Box>
         ))}
       </List>
-      <Box
+      {/* <Box
         component={"a"}
         href="https://inpulse.com.ar"
         target="_blank"
@@ -103,7 +103,7 @@ export const HeaderTwoLines: React.FC = () => {
         <BodyS sx={{ color: "inherit",textAlign: "center" }}>
           Desarrollado por
         </BodyS>
-      </Box>
+      </Box> */}
     </Box>
   );
 
@@ -128,22 +128,24 @@ export const HeaderTwoLines: React.FC = () => {
               // versión móvil
               <Toolbar disableGutters sx={{ height: '100%' }}>
                 <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: "space-between", paddingX: { xs: '1rem',} }}>
-                  <IconButton
-                    color="inherit"
-                    aria-label="open drawer"
-                    edge="start"
-                    onClick={handleDrawerToggle}
-                    sx={{ mr: 2, border: "none" }}
-                  >
-                    <MenuIcon />
-                  </IconButton>
-                  <Box 
-                  component={"img"}
-                  src={logoTextHorizontal}
-                  alt="Logo Óptica Villagra"
-                  height="60px"
-                  onClick={handleLogoClick}
-                  />
+                  <Box sx={{display: "flex", gap: "20px"}}>
+                    <IconButton
+                      color="inherit"
+                      aria-label="open drawer"
+                      edge="start"
+                      onClick={handleDrawerToggle}
+                      sx={{ border: "none" }}
+                    >
+                      <MenuIcon />
+                    </IconButton>
+                    <Box 
+                    component={"img"}
+                    src={logoTextHorizontal}
+                    alt="Logo Óptica Villagra"
+                    height="40px"
+                    onClick={handleLogoClick}
+                    />
+                  </Box>
                   <CartButton />
                 </Box>
               </Toolbar>
@@ -153,12 +155,11 @@ export const HeaderTwoLines: React.FC = () => {
               <Toolbar disableGutters sx={{ height: '100px', borderBottom: `1px solid ${greyColor[500]}`, width: "100%", justifyContent: "center" }}>
                 <Box sx={{ 
                   flexGrow: 1, 
-                  maxWidth: "1280px",
                   display: 'flex', 
                   alignItems: 'center', 
                   justifyContent: 'space-between', 
-                  paddingX: { xs: '2rem', sm: '3rem', md: '4rem', lg: '5rem', xl: '8rem'},
-                  gap: {xs: '1rem', sm: '2rem', md: '3rem', lg: '4rem', xl: '5rem'}
+                  paddingX: { md: '4rem', lg: '5rem', xl: '8rem'},
+                  // gap: {md: '3rem', lg: '4rem', xl: '5rem'}
                 }}>
                   <SearchField sx={{flex: 1}}/>
                   <Box 
@@ -173,11 +174,9 @@ export const HeaderTwoLines: React.FC = () => {
                     display: 'flex', 
                     alignItems: 'center',
                     justifyContent: 'end',
-                    // gap: {xs: '1rem', lg: '2rem', xl: '3rem'} 
                     gap: '1rem',
                     flex: 1,
                   }}>
-                    {/* TODO: refactorizar boton de carrito */}
                     <CartButton />
                     <LoginButton />
 
@@ -208,18 +207,29 @@ export const HeaderTwoLines: React.FC = () => {
                   width: '100%',
                   maxWidth: "1280px",
                   gap: {xs: '3rem', lg: '4rem', xl: '5rem'} 
-              }}>
-                {productsItems.map((item) => (
-                      <Box
-                        key={item.text}
-                        component={"a"}
-                        href={item.path}
-                      >
-                        <Heading5 sx={{ "&:hover":{color: palette.text.primary, }}}>
-                          {item.text}
-                        </Heading5>
-                      </Box>
-                    ))}
+                }}>
+                  {productsItems.map((item) => (
+                    <Box
+                      key={item.text}
+                      component={"a"}
+                      href={item.path}
+                    >
+                      <Heading5 sx={{ "&:hover":{color: palette.text.primary, }}}>
+                        {item.text}
+                      </Heading5>
+                    </Box>
+                  ))}
+                  {menuItems.map((item) => (
+                    <Box
+                      key={item.text}
+                      component={"a"}
+                      href={item.path}
+                    >
+                      <Heading5 sx={{ "&:hover":{color: palette.text.primary, }}}>
+                        {item.text}
+                      </Heading5>
+                    </Box>
+                  ))}
                 </Box>
               </Toolbar>
             </>
