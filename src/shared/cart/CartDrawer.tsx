@@ -230,7 +230,7 @@ export const CartDrawer: React.FC<ICartDrawerProps> = ({openCartDrawer = false, 
         </Box>
 
         {/* Productos de carrito */}
-        <Box sx={{flexGrow:1, overflowY: "auto"}}>
+        <Box sx={{ overflowY: "auto"}}>
           {mockCart.cartItems.map((cartItem, index)=>(
             <CartDrawerItem cartItem={cartItem} index={index} />
           ))}
