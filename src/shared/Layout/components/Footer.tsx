@@ -7,7 +7,7 @@ import {
 
 // import inpulseLogo from "@img/inpulse_design_logo_blanco.svg";
 import logoContraste from "@img/logo_nombre_vertical.svg";
-import { productsItems } from "../utils/info";
+import { menuItems, productsItems } from "../utils/info";
 import {
   BodyS,
   CaptionAlt,
@@ -99,10 +99,10 @@ export const Footer: React.FC = () => {
               textAlign: {xs: "center", md: "left"}
             }}>
               Categorías</Heading5>
-            <List sx={{display: {xs: "flex", md:"column", flexWrap: "wrap"}}}>
+            <List sx={{display: "flex", flexDirection: {xs: "row", sm:"column"}, flexWrap: {xs: "wrap", md: "nowrap"}, gap:"8px"}}>
               {productsItems.map((item) => (
-                <Box key={item.text} component={"a"} href={item.path}>
-                  <BodyS sx={{ width: {xs: "45vw", md: "unset"}, marginBottom:{xs:"10px", md:"unset"}, color: greyColor[800], "&:hover":{color: "text.primary"}}}>
+                <Box key={item.text.replace(" ","-")} component={"a"} href={item.path}>
+                  <BodyS sx={{ width: {xs: "45vw", md: "unset"}, color: greyColor[800], "&:hover":{color: "text.primary"}}}>
                     {item.text}
                   </BodyS>
                 </Box>
@@ -110,34 +110,21 @@ export const Footer: React.FC = () => {
             </List>
           </Box>
 
-          {/* Términos y Condiciones */}
+          {/* Secciones de páginas */}
           <Box sx={{
             gridArea: {xs: "5 / 1 / 6 / 3", sm:"3 / 1 / 4 / 2" , lg: "2 / 2 / 3 / 3"},
             display: {xs: "flex", sm:"block"},
             justifyContent: "space-between"
           }}>
-            <OnlyTextButton
-              id="bt-footer-terms-conditions"
-              onClick={()=>navigate("./terms-and-conditions")}
-              type="blueButton"
-              text="Términos y condiciones"
-              isFetching={false}
-              disabled={false}
-              sx={{
-                textWrap: "nowrap"
-              }}
-            />
-            <OnlyTextButton
-              id="bt-footer-privacy-policy"
-              onClick={()=>navigate("./privacy-policy")}
-              type="blueButton"
-              text="Políticas de privacidad"
-              isFetching={false}
-              disabled={false}
-              sx={{
-                textWrap: "nowrap"
-              }}
-            />
+            <List sx={{display: "flex", flexDirection: {xs: "row", sm:"column"}, flexWrap: {xs: "wrap", md: "nowrap"}, gap:"8px"}}>
+              {menuItems.map((item) => (
+                <Box key={item.text.replace(" ","-")} component={"a"} href={item.path}>
+                  <BodyS sx={{ width: {xs: "45vw", md: "unset"}, color: greyColor[800], "&:hover":{color: "text.primary"}}}>
+                    {item.text}
+                  </BodyS>
+                </Box>
+              ))}
+            </List>
           </Box>
 
           {/* Contacto */}
@@ -152,19 +139,19 @@ export const Footer: React.FC = () => {
           >
             <Heading5 sx={{width: {xs: "unset",sm: "210px", lg:"unset"},}}>Contáctanos</Heading5>
             <List sx={{width: {xs: "unset",sm: "210px", lg:"unset"},}}>
-              <BodyS sx={{ color: greyColor[800] ,"&:hover":{color: "text.primary"}}}>
+              <BodyS sx={{ color: greyColor[800]}}>
                 Mitre 1745, S. C. de Bariloche.
               </BodyS>
-              <BodyS sx={{ color: greyColor[800] ,"&:hover":{color: "text.primary"}}}>
+              <BodyS sx={{ color: greyColor[800]}}>
                 Rio Negro, Argentina.
               </BodyS>
-              <BodyS sx={{ color: greyColor[800] ,"&:hover":{color: "text.primary"}}}>
+              <BodyS sx={{ color: greyColor[800]}}>
                 CP 8400
               </BodyS>
-              <BodyS sx={{ color: greyColor[800] ,"&:hover":{color: "text.primary"}}}>
+              <BodyS sx={{ color: greyColor[800]}}>
                 +54 9 11 6298 4904
               </BodyS>
-              <BodyS sx={{ color: greyColor[800] ,"&:hover":{color: "text.primary"}}}>
+              <BodyS sx={{ color: greyColor[800]}}>
                 info@kostentrek.com
               </BodyS>
             </List>
@@ -172,15 +159,19 @@ export const Footer: React.FC = () => {
 
           {/* Redes Sociales */}
           <Box sx={{
-            width: {xs: "unset",sm: "210px", lg:"unset"},
             display:"flex", 
             justifyContent: {xs: "start", sm: "center", lg: "start"},
-            gap: "8px", 
-            gridArea: {xs: "3 / 1 / 4 / 2", sm: "3 / 2 / 4 / 3" , lg: "2 / 3 / 3 / 4"},
           }}>
-          <WhatsAppIcon width={20} sx={{color: "primary.main"}} />
-          <InstagramIcon width={20} sx={{color: "primary.main"}} />
-          <FacebookIcon width={20} sx={{color: "primary.main"}} />
+            <Box sx={{
+              display:"flex", 
+              width: {xs: "unset",sm: "210px", lg:"unset"},
+              gap: "8px", 
+              gridArea: {xs: "3 / 1 / 4 / 2", sm: "3 / 2 / 4 / 3" , lg: "2 / 3 / 3 / 4"},
+            }}>
+            <WhatsAppIcon width={20} sx={{color: "primary.main"}} />
+            <InstagramIcon width={20} sx={{color: "primary.main"}} />
+            <FacebookIcon width={20} sx={{color: "primary.main"}} />
+            </Box>
           </Box>
 
           {/* Newsletter */}
@@ -207,22 +198,47 @@ export const Footer: React.FC = () => {
             backgroundColor: palette.primary[100] 
           }} 
           /> */}
+        </Box>
+        
+
           <Box
             id="footerBottom"
-            sx={{
-              display: "flex",
-              flexDirection: { xs: "column", md: "row" },
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0.5rem",
-              marginTop: "2rem",
-            }}
           >
-          </Box>
-        </Box>
+
+            {/* Términos y Condiciones */}
+            <Box sx={{
+              display: "flex",
+              flexDirection: {xs: "column", md: "row"},
+              justifyContent: "center",
+              alignItems: {xs: "center", md: "start"},
+              gap: {xs:"8px", sm:"16px", lg:"24px"}
+            }}>
+              <OnlyTextButton
+                id="bt-footer-terms-conditions"
+                onClick={()=>navigate("./terms-and-conditions")}
+                type="blueButton"
+                text="Términos y condiciones"
+                isFetching={false}
+                disabled={false}
+                sx={{
+                  textWrap: "nowrap"
+                }}
+              />
+              <OnlyTextButton
+                id="bt-footer-privacy-policy"
+                onClick={()=>navigate("./privacy-policy")}
+                type="blueButton"
+                text="Políticas de privacidad"
+                isFetching={false}
+                disabled={false}
+                sx={{
+                  textWrap: "nowrap"
+                }}
+              />
+            </Box>
         {/* service Mark y Trade Mark ℠™ */}
             <CaptionAlt sx={{ color: "inherit", textAlign: "center", marginY: "1rem" }}>
-              {new Date().getFullYear()} | TM Todos los derechos reservados.
+              {new Date().getFullYear()} | TM
             </CaptionAlt>
             {/* <Box
               component={"a"}
@@ -247,6 +263,7 @@ export const Footer: React.FC = () => {
                 loading="lazy"
               />
             </Box> */}
+                      </Box>
       </Container>
     </Box>
   );
