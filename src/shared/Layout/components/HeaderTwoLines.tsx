@@ -17,11 +17,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
 import { Heading5 } from '@theme/textStyles';
-import { isNavBarTransparent, menuItems, navBarDesktopHeight, navBarMobileHeight, productsItems } from '../utils/info';
+import { isNavBarTransparent, menuItems, navBar1DesktopHeight, navBar2DesktopHeight, navBarDesktopHeight, navBarMobileHeight, productsItems } from '../utils/info';
 import { SearchField } from './SearchField';
 import { greyColor } from '@/theme/theme';
 import { LoginButton } from './LoginButton';
 import { CartButton } from '@shared/cart/CartButton';
+import { ProductConfirm } from '@/shared/cart/ProductConfirm';
+import { mockCart } from '@/shared/cart/CartDrawer';
 
 
 export const HeaderTwoLines: React.FC = () => {
@@ -30,7 +32,16 @@ export const HeaderTwoLines: React.FC = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [openModalConfirm, setOpenModalConfirm] = useState(true)
+  const [openCartDrawer, setOpenCartDrawer] = useState<boolean>(false)
   
+  const closeCartDrawer = () => {
+    setOpenCartDrawer(false)
+  }
+  const handleCartButton = () => {
+    setOpenCartDrawer(!openCartDrawer)
+  }
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -38,6 +49,10 @@ export const HeaderTwoLines: React.FC = () => {
   const handleLogoClick = () => {
     window.location.href = './';
   };
+
+  const handleCloseModal = () => {
+    setOpenModalConfirm(false)
+  }
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', position: 'relative', height: '100%' }}>
@@ -146,13 +161,13 @@ export const HeaderTwoLines: React.FC = () => {
                     onClick={handleLogoClick}
                     />
                   </Box>
-                  <CartButton />
+                  <CartButton openCartDrawer={openCartDrawer} closeCartDrawer={closeCartDrawer} handleCartButton={handleCartButton} />
                 </Box>
               </Toolbar>
             ) : (
               // versión escritorio
               <>
-              <Toolbar disableGutters sx={{ height: '100px', borderBottom: `1px solid ${greyColor[500]}`, width: "100%", justifyContent: "center" }}>
+              <Toolbar disableGutters sx={{ height: navBar1DesktopHeight, borderBottom: `1px solid ${greyColor[500]}`, width: "100%", justifyContent: "center" }}>
                 <Box sx={{ 
                   flexGrow: 1, 
                   display: 'flex', 
@@ -177,8 +192,8 @@ export const HeaderTwoLines: React.FC = () => {
                     gap: '1rem',
                     flex: 1,
                   }}>
-                    <CartButton />
-                    <LoginButton />
+                  <CartButton openCartDrawer={openCartDrawer} closeCartDrawer={closeCartDrawer} handleCartButton={handleCartButton} />
+                  <LoginButton />
 
                     {/* {menuItems.map((item) => (
                       <Box
@@ -199,7 +214,7 @@ export const HeaderTwoLines: React.FC = () => {
                   </Box>
                 </Box>
               </Toolbar>
-              <Toolbar disableGutters sx={{ height: '50px', minHeight: {xs: '50px', md: '50px', lg: '50px', xl: '50px'}, justifyContent: "center" }}>
+              <Toolbar disableGutters sx={{ height: navBar2DesktopHeight, minHeight: {xs: '50px', md: '50px', lg: '50px', xl: '50px'}, justifyContent: "center" }}>
                 <Box sx={{ 
                   display: 'flex', 
                   alignItems: 'center', 
@@ -252,6 +267,12 @@ export const HeaderTwoLines: React.FC = () => {
         >
           {drawer}
         </Drawer>
+        <ProductConfirm 
+          cartItem={mockCart.cartItems[0]} 
+          openModalConfirm={openModalConfirm} 
+          onCloseModalConfirm={handleCloseModal} 
+          handleCartOpen={handleCartButton}
+        />
       </Box>
     </>
   );
