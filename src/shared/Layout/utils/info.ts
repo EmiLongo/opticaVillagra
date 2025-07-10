@@ -8,7 +8,9 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 
 export const navBarLines: number = 2;   //  1
 export const isNavBarTransparent: boolean = false;
-export const navBarDesktopHeight: string = "150px";
+export const navBarDesktopHeight: string = "150px"; // tiene que ser la suma de las 2 de abajo
+export const navBar1DesktopHeight: string = "100px";
+export const navBar2DesktopHeight: string = "50px";
 export const navBarMobileHeight: string = "60px";
 
 
@@ -22,7 +24,8 @@ export const productsItems = [
 
 export const menuItems = [
   // { text: 'Inicio', path: '#home' },
-  { text: 'Quiénes somos', path: '/about-us' },
+  { text: 'Nosotros', path: '/about-us' },
+  { text: 'Libro de quejas', path: '/complaints-book' },
   
 ];
 
