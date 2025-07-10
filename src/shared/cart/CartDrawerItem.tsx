@@ -32,7 +32,7 @@ export const CartDrawerItem: React.FC<ICartDrawerItem> = ({cartItem, index}) => 
     key={`cart-item-${index}`}
     sx={{display: "flex", alignItems: "center", gap: "1rem", marginBottom: "16px"}}
     >
-      <Box component="img" width={100} height={100}
+      <Box component="img" width={120} height={120}
       alt={`Foto del Producto ${index} del Carrito`}
       src={cartItem.product.urlPhoto}
       sx={{borderRadius: "8px"}}
