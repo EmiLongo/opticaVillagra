@@ -12,16 +12,17 @@
 //   createdAt     DateTime @default(now())
 // }
 export interface IProduct {
-  id: number
-  sectionId: number
-  title: string
-  description?: string
-  discount: number
-  price: number
-  priceDiscount: number
-  priceTransfer: number
-  plan: string
-  urlPhoto: string
-  isValid: boolean
-  createdAt?: string
+  id: number;
+  sectionId: number;
+  title: string;
+  description?: string;
+  discount: number;
+  price: number;
+  priceDiscount: number;
+  priceTransfer: number;
+  plan: string;
+  urlPhoto: string;
+  urlThumbnail: string;
+  isValid: boolean;
+  createdAt?: string;
 }
