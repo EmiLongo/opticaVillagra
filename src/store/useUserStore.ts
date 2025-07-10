@@ -3,7 +3,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { IUser } from '../api/authApi';
 
-type UserState = {
+interface IUserState {
   user: IUser | null;
   token: string | null;
   setUser: (user: IUser, token: string) => void;
@@ -11,7 +11,7 @@ type UserState = {
   isAuthenticated: () => boolean;
 };
 
-export const useUserStore = create<UserState>()(
+export const useUserStore = create<IUserState>()(
   persist(
     (set, get) => ({
       user: null,
