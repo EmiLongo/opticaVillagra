@@ -17,6 +17,7 @@ export interface CartActions {
   removeFromCart: (productId: number) => void;
   updateQuantity: (productId: number, quantity: number) => void;
   clearCart: () => void;
+  clearLastAdded: () => void;
   
   // Utilidades
   getCartItemsCount: () => number;
@@ -45,6 +46,8 @@ const createEmptyCart = (userId?: number, sessionId?: string): ICart => {
     createdAt: now,
     updatedAt: now,
     lastActivity: now,
+    lastAddedProduct: null,
+    lastAddedAt: null,
     emailSent: false,
     cartItems: []
   };
@@ -55,7 +58,7 @@ const createCartItem = (product: IProduct, quantity: number, cartId: number): IC
   return {
     id: generateTempId(),
     cartId,
-    articuloId: product.id,
+    productId: product.id,
     quantity,
     addedAt: new Date().toISOString(),
     product
@@ -79,6 +82,8 @@ export const useCartStore = create<CartStore>()(
       cart: null,
       isLoading: false,
       error: null,
+      lastAddedProduct: null,
+      lastAddedAt: null,
 
       // Inicializar carrito
       initializeCart: (userId?: number, sessionId?: string) => {
@@ -102,7 +107,7 @@ export const useCartStore = create<CartStore>()(
 
         // Buscar si el producto ya está en el carrito
         const existingItemIndex = updatedCart.cartItems.findIndex(
-          item => item.articuloId === product.id
+          item => item.productId === product.id
         );
 
         if (existingItemIndex >= 0) {
@@ -117,10 +122,16 @@ export const useCartStore = create<CartStore>()(
           updatedCart.cartItems.push(newItem);
         }
 
+        updatedCart.lastAddedProduct = product;
+        updatedCart.lastAddedAt = new Date().toISOString();
+
         // Actualizar actividad del carrito
         updatedCart = updateCartActivity(updatedCart);
 
-        set({ cart: updatedCart, error: null });
+        set({ 
+          cart: updatedCart, 
+          error: null,
+        });
       },
 
       // Remover producto del carrito
@@ -130,11 +141,23 @@ export const useCartStore = create<CartStore>()(
 
         const updatedCart = {
           ...updateCartActivity(cart),
-          cartItems: cart.cartItems.filter(item => item.articuloId !== productId)
+          cartItems: cart.cartItems.filter(item => item.productId !== productId)
         };
 
         set({ cart: updatedCart, error: null });
       },
+
+      // limpiar el ultimo producto agregado
+      clearLastAdded: () => {
+        const { cart } = get();
+        if (!cart) return;
+        set({ cart: { 
+          ...cart, 
+          lastAddedProduct: null, 
+          lastAddedAt: null 
+        }});
+      },
+      
 
       // Actualizar cantidad de un producto
       updateQuantity: (productId: number, quantity: number) => {
@@ -149,7 +172,7 @@ export const useCartStore = create<CartStore>()(
         const updatedCart = {
           ...updateCartActivity(cart),
           cartItems: cart.cartItems.map(item =>
-            item.articuloId === productId
+            item.productId === productId
               ? { ...item, quantity }
               : item
           )
@@ -195,14 +218,14 @@ export const useCartStore = create<CartStore>()(
       getCartItemByProductId: (productId: number) => {
         const { cart } = get();
         if (!cart) return undefined;
-        return cart.cartItems.find(item => item.articuloId === productId);
+        return cart.cartItems.find(item => item.productId === productId);
       },
 
       // Verificar si producto está en carrito
       isProductInCart: (productId: number) => {
         const { cart } = get();
         if (!cart) return false;
-        return cart.cartItems.some(item => item.articuloId === productId);
+        return cart.cartItems.some(item => item.productId === productId);
       },
 
       // Gestión de estado de carga
