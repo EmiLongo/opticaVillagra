@@ -32,7 +32,8 @@
       "@components/*": ["src/components/*"],
       "@modules/*": ["src/modules/*"],
       "@shared/*": ["src/shared/*"],
-      "@theme/*": ["src/theme/*"]
+      "@theme/*": ["src/theme/*"],
+      "@store/*": ["src/store/*"]
     },
     
     /* Tipos para Node.js */
