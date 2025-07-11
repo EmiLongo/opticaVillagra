@@ -19,7 +19,7 @@ import { IProduct } from "@/shared/components/types";
 export interface ICartItem {
   id: number;
   cartId: number;
-  articuloId: number;
+  productId: number;
   quantity: number;
   addedAt: string;
   product: IProduct;
@@ -54,6 +54,8 @@ export interface ICart {
   createdAt: string;
   updatedAt: string;
   lastActivity: string;
+  lastAddedProduct: IProduct | null;
+  lastAddedAt: string | null;
   abandonedAt?: string;
   emailSent: boolean;
   emailSentAt?: string;
