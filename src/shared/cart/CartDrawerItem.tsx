@@ -1,3 +1,4 @@
+// src/shared/cart/CartDrawerItem.tsx
 import { Box } from "@mui/material";
 import React, { useState } from "react";
 import { ICartItem } from "./types";
@@ -34,7 +35,7 @@ export const CartDrawerItem: React.FC<ICartDrawerItem> = ({cartItem, index}) => 
     >
       <Box component="img" width={120} height={120}
       alt={`Foto del Producto ${index} del Carrito`}
-      src={cartItem.product.urlPhoto}
+      src={cartItem.product.urlThumbnail}
       sx={{borderRadius: "8px"}}
       />
       <Box sx={{display: "flex", flexDirection: "column", gap: "8px"}}>
