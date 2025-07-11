@@ -1,5 +1,5 @@
 // components/Header.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
   AppBar, 
   Toolbar, 
@@ -17,24 +17,33 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
 import { Heading5 } from '@theme/textStyles';
-import { isNavBarTransparent, menuItems, navBar1DesktopHeight, navBar2DesktopHeight, navBarDesktopHeight, navBarMobileHeight, productsItems } from '../utils/info';
 import { SearchField } from './SearchField';
-import { greyColor } from '@/theme/theme';
+import { greyColor } from '@theme/theme';
 import { LoginButton } from './LoginButton';
 import { CartButton } from '@shared/cart/CartButton';
-import { ProductConfirm } from '@/shared/cart/ProductConfirm';
-import { mockCart } from '@/shared/cart/CartDrawer';
+import { ProductConfirm } from '@shared/cart/ProductConfirm';
+import { useCart } from '@store/useCartStore';
+import { 
+  isNavBarTransparent, 
+  menuItems, 
+  navBar1DesktopHeight, 
+  navBar2DesktopHeight, 
+  navBarDesktopHeight, 
+  navBarMobileHeight, 
+  productsItems 
+} from '../utils/info';
 
 
 export const HeaderTwoLines: React.FC = () => {
+  const { initializeCart } = useCart();
+  const { lastAddedProduct, lastAddedAt } = useCart();
   const theme = useTheme();
   const { palette } = theme;
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openModalConfirm, setOpenModalConfirm] = useState(true)
   const [openCartDrawer, setOpenCartDrawer] = useState<boolean>(false)
-  
+
   const closeCartDrawer = () => {
     setOpenCartDrawer(false)
   }
@@ -50,10 +59,9 @@ export const HeaderTwoLines: React.FC = () => {
     window.location.href = './';
   };
 
-  const handleCloseModal = () => {
-    setOpenModalConfirm(false)
-  }
+ 
 
+  // menu lateral en mobile
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center', position: 'relative', height: '100%' }}>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: "3rem", mb: "2rem" }}>
@@ -121,6 +129,19 @@ export const HeaderTwoLines: React.FC = () => {
       </Box> */}
     </Box>
   );
+
+  // se inicializa el carrito
+  useEffect(() => {
+    // Inicializar con sessionId único para usuarios no logueados
+    const sessionId = localStorage.getItem('sessionId') || 
+                     `session_${Date.now()}_${Math.random()}`;
+    
+    if (!localStorage.getItem('sessionId')) {
+      localStorage.setItem('sessionId', sessionId);
+    }
+    
+    initializeCart(undefined, sessionId);
+  }, []);
 
   return (
     <>
@@ -267,12 +288,11 @@ export const HeaderTwoLines: React.FC = () => {
         >
           {drawer}
         </Drawer>
-        <ProductConfirm 
-          cartItem={mockCart.cartItems[0]} 
-          openModalConfirm={openModalConfirm} 
-          onCloseModalConfirm={handleCloseModal} 
+        {lastAddedProduct && <ProductConfirm 
           handleCartOpen={handleCartButton}
-        />
+          lastAddedProduct={lastAddedProduct}
+          lastAddedAt={lastAddedAt}
+        />}
       </Box>
     </>
   );
