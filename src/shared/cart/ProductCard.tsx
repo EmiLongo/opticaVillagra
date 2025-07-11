@@ -1,3 +1,4 @@
+// src/shared/cart/ProductCard.tsx
 import React from "react"
 import { Box, Card } from "@mui/material"
 import { BodyS, Caption, Heading3, Heading5 } from "@/theme/textStyles"
@@ -5,7 +6,8 @@ import { WhiteButton } from "@shared/components/buttons/WhiteButton"
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { blueColor, greyColor, orangeColor } from "@/theme/theme";
 import { IProduct } from "../components/types";
-import { numberToPrice } from "../utils/convertNumberToPrice";
+import { numberToPrice } from "@shared/utils/convertNumberToPrice";
+import { useCart } from "@store/useCartStore";
 
 interface IProductCard {
   product: IProduct;
@@ -13,6 +15,10 @@ interface IProductCard {
 }
 
 export const ProductCard: React.FC<IProductCard> = ({ product, index }) => {
+  const { addProduct } = useCart();
+  const addToCart = () => {
+    addProduct(product, 1); // cantidad = 1
+  };
   return (
     <Card 
     elevation={4}
@@ -78,7 +84,7 @@ export const ProductCard: React.FC<IProductCard> = ({ product, index }) => {
           id={`add-cart-${index}`}
           text="AÑADIR AL CARRITO"
           fetchingText="AÑADIENDO..."
-          onClick={() => console.log(`se quizo añadir ${product.title}`)}
+          onClick={addToCart}
           isFetching={false}
           icon={<ShoppingCartOutlinedIcon />}
           disabled={false}
