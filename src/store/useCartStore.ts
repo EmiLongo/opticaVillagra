@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+// src/store/useCartStore.ts
 import { useCartStore } from './cartStore';
 import { IProduct } from '@shared/components/types';
 
@@ -12,6 +12,7 @@ export const useCart = () => {
     removeFromCart,
     updateQuantity,
     clearCart,
+    clearLastAdded,
     getCartItemsCount,
     getCartTotal,
     getCartItemByProductId,
@@ -19,13 +20,6 @@ export const useCart = () => {
     setLoading,
     setError
   } = useCartStore();
-
-  // Inicializar carrito automáticamente al montar el hook
-  useEffect(() => {
-    if (!cart) {
-      initializeCart();
-    }
-  }, [cart, initializeCart]);
 
   // Funciones auxiliares con validaciones adicionales
   const addProduct = (product: IProduct, quantity: number = 1) => {
@@ -136,10 +130,12 @@ export const useCart = () => {
     isEmpty,
     
     // Acciones principales
+    initializeCart,
     addProduct,
     removeProduct,
     updateProductQuantity,
     clearCart: clearCartWithConfirmation,
+    clearLastAdded,
     
     // Utilidades
     itemsCount: getCartItemsCount(),
@@ -159,6 +155,8 @@ export const useCart = () => {
     // Información del carrito
     cartItems: cart?.cartItems || [],
     cartId: cart?.id,
-    lastActivity: cart?.lastActivity
+    lastActivity: cart?.lastActivity,
+    lastAddedProduct: cart?.lastAddedProduct,
+    lastAddedAt: cart?.lastAddedAt,
   };
 };
