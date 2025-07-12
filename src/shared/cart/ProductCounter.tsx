@@ -4,6 +4,7 @@ import { Box, IconButton } from "@mui/material";
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import { greyColor } from "@theme/theme";
+import { useCart } from "@/store/useCartStore";
 
 interface IProductCounter {
   index: number;
@@ -12,6 +13,7 @@ interface IProductCounter {
   handleSus: ()=>void;
 }
 export const ProductCounter: React.FC<IProductCounter> = ({index, counter, handleAdd, handleSus}) => {
+  const { isLoading } = useCart()
   const iconBtStyles: object = {
     display:"flex", 
     alignItems:"center", 
@@ -36,12 +38,14 @@ export const ProductCounter: React.FC<IProductCounter> = ({index, counter, handl
     >
       <IconButton sx={{...iconBtStyles}}
       onClick={handleSus}
+      disabled={isLoading}
       >
         <RemoveOutlinedIcon width={20} sx={{color: greyColor[950]}} />
       </IconButton>
       <InputField sx={{width: "20px", textAlign: "center"}}>{counter}</InputField>
       <IconButton sx={{...iconBtStyles}}
       onClick={handleAdd}
+      disabled={isLoading}
       >
         <AddOutlinedIcon width={20} sx={{color: greyColor[950]}} />
       </IconButton>
