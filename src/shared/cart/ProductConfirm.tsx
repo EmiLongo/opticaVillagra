@@ -1,6 +1,6 @@
 // src/shared/cart/ProductConfirm.tsx
 import React, { useEffect } from "react";
-import { Box } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import { numberToPrice } from "@shared/utils/convertNumberToPrice";
 import { WhiteButton } from "@shared/components/buttons/WhiteButton";
 import { BodyMEmph, BodyS } from "@theme/textStyles";
@@ -17,6 +17,11 @@ interface IProductConfirm {
 }
 export const ProductConfirm: React.FC<IProductConfirm> = ({ handleCartOpen, lastAddedProduct, lastAddedAt }) => {
   const { clearLastAdded } = useCart();
+
+  // TODO: hacer lógica de cierre
+  const handleCloseProductConfirm = () => {
+    console.log("cerrar Confirmacion")
+  }
 
   if(lastAddedAt) console.log(lastAddedAt);
   //TODO: que pasa si hay mas de un producto que se carga en el carrito???
@@ -58,7 +63,12 @@ export const ProductConfirm: React.FC<IProductConfirm> = ({ handleCartOpen, last
         position: "relative",
       }}
       >
-        <CloseIcon sx={{width: "24px", position: "absolute", top: 0, right: "-4px", color: greyColor[950]}} />
+        <IconButton 
+          onClick={handleCloseProductConfirm}
+          sx={{position: "absolute", top: 0, right: "-4px", border: "none"}}
+        >
+          <CloseIcon sx={{width: "24px", color: greyColor[950]}} />
+        </IconButton>
         <Box component="img" width={50} height={50}
         alt={`Foto del Producto ${lastAddedProduct.title}`}
         src={lastAddedProduct.urlThumbnail}
@@ -70,7 +80,7 @@ export const ProductConfirm: React.FC<IProductConfirm> = ({ handleCartOpen, last
           flexDirection: "column", 
           gap: "8px"
         }}>
-          <BodyS sx={{height: "2.5em"}}>{lastAddedProduct.title}</BodyS>
+          <BodyS sx={{height: "4em"}}>{lastAddedProduct.title}</BodyS>
           <BodyS>1 x {numberToPrice(lastAddedProduct.price)}</BodyS>
         </Box>
       </Box>
