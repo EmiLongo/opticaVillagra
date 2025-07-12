@@ -46,7 +46,7 @@ export const CartDrawer: React.FC<ICartDrawerProps> = ({openCartDrawer = false, 
       }}>
         {/* Boton cierre */}
         <Box
-          sx={{ position: 'absolute', top: "1rem", right: "1rem" }}
+          sx={{ position: 'absolute', top: "1rem", right: "1rem", color: greyColor[950] }}
           onClick={closeCartDrawer}
         >
           <CloseIcon />
@@ -74,7 +74,11 @@ export const CartDrawer: React.FC<ICartDrawerProps> = ({openCartDrawer = false, 
           {/* Productos de carrito */}
           <Box sx={{ overflowY: "auto"}}>
             {cart.cartItems.map((cartItem, index)=>(
-              <CartDrawerItem cartItem={cartItem} index={index} />
+              <CartDrawerItem 
+                cartItem={cartItem} 
+                index={index} 
+                closeCartDrawer={closeCartDrawer}
+              />
             ))}
           </Box>
 
@@ -102,6 +106,9 @@ export const CartDrawer: React.FC<ICartDrawerProps> = ({openCartDrawer = false, 
               </Box>
               <Box sx={{display: "flex", alignItems:"center", justifyContent:"end" }}>
                 <BodyS sx={{color: "secondary.dark"}}>{`o ${numberToPrice(totalWithDiscount * 0.8)} con Transferencia o depósito`}</BodyS>
+              </Box>
+              <Box sx={{display: "flex", alignItems:"center", justifyContent:"end" }}>
+                <BodyS sx={{color: "secondary.dark"}}>{`o hasta 6 cuotas de ${numberToPrice(totalWithDiscount / 6)} sin interes`}</BodyS>
               </Box>
             </Box>
             <ColorButton
