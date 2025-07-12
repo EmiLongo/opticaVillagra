@@ -6,28 +6,39 @@ import { BodyMEmph, BodyS } from "@theme/textStyles";
 import { numberToPrice } from "@shared/utils/convertNumberToPrice";
 import { WhiteButton } from "@shared/components/buttons/WhiteButton";
 import { ProductCounter } from "./ProductCounter";
+import { useCart } from "@store/useCartStore";
+import { ModalDeleteCartItem } from "./ModalDeleteCartItem";
 
 interface ICartDrawerItem {
   cartItem: ICartItem;
   index: number;
+  closeCartDrawer: ()=>void;
 }
-export const CartDrawerItem: React.FC<ICartDrawerItem> = ({cartItem, index}) => {
-  const [isFetching, setIsFetching] = useState<boolean>(false)
+export const CartDrawerItem: React.FC<ICartDrawerItem> = ({cartItem, index, closeCartDrawer}) => {
+  const { updateProductQuantity, isLoading } = useCart();
   const [counter, setCounter] = useState<number>(cartItem.quantity);
+  const [openDeleteItemModal, setOpenDeleteItemModal] = useState<boolean>(false);
 
   const handleAdd = () => {
-    setCounter(counter+1);
+    const quantity = counter+1;
+    setCounter(quantity);
+    updateProductQuantity(cartItem.productId, quantity)
   }
   const handleSus = () => {
     if (counter === 1 ) return;
-    setCounter(counter-1);
+    const quantity = counter-1;
+    setCounter(quantity);
+    updateProductQuantity(cartItem.productId, quantity)
   }
 
-  const handleDeleteCartItem = (idInput: number) =>{
-    setIsFetching(true);
-    console.log(idInput);
-    setIsFetching(false);
+  const handleDeleteCartItem = () =>{
+    setOpenDeleteItemModal(true)
   }
+
+  const handleToogleDeleteItemModal = () => {
+    setOpenDeleteItemModal(!openDeleteItemModal)
+  }
+
   return (
     <Box 
     key={`cart-item-${index}`}
@@ -51,14 +62,22 @@ export const CartDrawerItem: React.FC<ICartDrawerItem> = ({cartItem, index}) => 
           <WhiteButton
           id={`delete-cart-item-${index}`}
           text="BORRAR"
-          onClick={() => handleDeleteCartItem(cartItem.id)}
+          onClick={() => handleDeleteCartItem()}
           fetchingText={"borrando"}
-          isFetching={isFetching}
-          disabled={isFetching}
+          isFetching={false}
+          disabled={isLoading}
           sx={{width: "85px"}}
           />
         </Box>
       </Box>
+      {openDeleteItemModal && 
+        <ModalDeleteCartItem 
+          openDeleteModal={openDeleteItemModal} 
+          closeDeleteItemModal={handleToogleDeleteItemModal} 
+          cartItem={cartItem}
+          closeCartDrawer={closeCartDrawer}  
+        />
+      }
     </Box>
   )
 }
